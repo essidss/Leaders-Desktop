@@ -43,7 +43,7 @@ private String content;
     }
 @Override
     public String toString() {
-        return "Personne{" + "id=" + id + " content=" + content + "\n";
+        return "Comment{" + "id=" + id + " content=" + content + "\n";
     }
 
 }

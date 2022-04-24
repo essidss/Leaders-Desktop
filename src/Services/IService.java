@@ -5,6 +5,7 @@
  */
 package Services;
 
+import Modal.Article;
 import java.util.List;
 
 /**

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="box" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="185.0" prefWidth="425.0" spacing="10.0" style="-fx-background-radius: 15;" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication3.CardController">
+   <children>
+      <ImageView fx:id="ArticleImage" fitHeight="185.0" fitWidth="164.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/img2.jpg" />
+         </image>
+      </ImageView>
+      <VBox alignment="CENTER_LEFT" prefHeight="185.0" prefWidth="210.0" stylesheets="@styles.css">
+         <children>
+            <Label fx:id="articleName" prefHeight="86.0" prefWidth="226.0" text="Article&#10; title" textFill="#0a0000">
+               <font>
+                  <Font name="Berlin Sans FB" size="28.0" />
+               </font>
+            </Label>
+            <Label fx:id="author" prefHeight="54.0" prefWidth="210.0" text="ARTICLE USER&#10; GOES HERE">
+               <font>
+                  <Font name="Berlin Sans FB" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="date" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="43.0" prefWidth="109.0" text="Date in here" textFill="#2c0909">
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+               <font>
+                  <Font name="Berlin Sans FB Demi Bold" size="18.0" />
+               </font>
+            </Label>
+            <VBox prefHeight="15.0" prefWidth="210.0">
+               <children>
+                  <ImageView fx:id="nbrelikes" fitHeight="32.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/ic_like.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</HBox>

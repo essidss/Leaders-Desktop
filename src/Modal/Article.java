@@ -17,7 +17,11 @@ int id;
 private String title,content;
 Date date;
 int liked;
-    int idcat;
+int idcat;
+String image;
+private int totalReactions;
+    private int nbComments;
+    private int nbShares;
 
     public Date getDate() {
         return date;
@@ -26,6 +30,39 @@ int liked;
     public void setDate(Date date) {
         this.date = date;
     }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public int getTotalReactions() {
+        return totalReactions;
+    }
+
+    public void setTotalReactions(int totalReactions) {
+        this.totalReactions = totalReactions;
+    }
+
+    public int getNbComments() {
+        return nbComments;
+    }
+
+    public void setNbComments(int nbComments) {
+        this.nbComments = nbComments;
+    }
+
+    public int getNbShares() {
+        return nbShares;
+    }
+
+    public void setNbShares(int nbShares) {
+        this.nbShares = nbShares;
+    }
+
 
     public Article(int id, String title, String content, Date date, int liked, int idcat) {
         this.id = id;

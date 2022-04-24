@@ -23,7 +23,7 @@ import Connectivity.ConnectionClass;
  *
  * @author Mohamed
  */
-public class ServiceComment implements IService<Comments>{
+public class ServiceComment implements IServcieComment<Comments>{
 private Connection cnx = ConnectionClass.getInstance().getCnx() ;
    
     @Override
@@ -43,18 +43,18 @@ private Connection cnx = ConnectionClass.getInstance().getCnx() ;
     }
 
     @Override
-    public List<Comments> afficher() {
+    public List<Comments> afficher(Article a) {
      List<Comments> commentss = new ArrayList();
         try {
        
-        String querry ="SELECT * FROM `comments`";
+        String querry ="SELECT * FROM `comments` WHERE id_post="+a.getId()+"";
         Statement stm = cnx.createStatement();
             ResultSet rs= stm.executeQuery(querry);
         while (rs.next()){
             Comments p = new Comments();
             
             p.setId(rs.getInt(1));
-            p.setContent(rs.getString("nom"));
+            p.setContent(rs.getString("content"));
              commentss.add(p);
         }
         

@@ -20,6 +20,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import Connectivity.ConnectionClass;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -53,7 +55,7 @@ String dc = date;
      List<Article> postss = new ArrayList();
         try {
        
-        String querry ="SELECT * FROM `article`";
+        String querry ="SELECT * FROM `article` WHERE archived='"+0+"' ";
         Statement stm = cnx.createStatement();
             ResultSet rs= stm.executeQuery(querry);
         while (rs.next()){
@@ -74,6 +76,35 @@ String dc = date;
         }
     return postss;
     }
+
+    public List<Article> getArticle(Article t) {
+ List<Article> postss = new ArrayList();
+        try {
+       
+            String querry = "SELECT * FROM `article` WHERE archived='" + 0 + "' and id=" + t.getId() + " ";
+        Statement stm = cnx.createStatement();
+            ResultSet rs= stm.executeQuery(querry);
+        while (rs.next()){
+            Article p = new Article();
+            
+            p.setId(rs.getInt(1));
+            p.setTitle(rs.getString("title"));
+            p.setContent(rs.getString(3));
+            p.setDate(rs.getDate("date"));
+            p.setIdcat(rs.getInt("idcat"));
+            postss.add(p);
+        }
+        
+        
+        
+        return postss;
+    } catch (SQLException ex) {
+        }
+    return postss;
+    }
+
+    
+
 
     @Override
     public void modifier(Article t) {
@@ -97,15 +128,15 @@ String dc = date;
     @Override
     public void supprimer(Article t) {
     
-  String req="DELETE FROM `article` WHERE id = ?" ;
+  String req="UPDATE `article` SET `archived`='"+1+"' WHERE id=?";
          try {
              PreparedStatement ste = cnx.prepareStatement(req);
               ste.setInt(1,t.getId());
              ste.executeUpdate();
-             System.out.println("post bien supprimé");
+             System.out.println("post bien Archivé");
             
          }catch (SQLException ex) {
-            System.out.println("Probléme");
+            System.out.println("Probléme d'archivage ");
             System.out.println(ex.getMessage());
         
          }
@@ -130,7 +161,7 @@ public List<Article> search(String entry)throws SQLException{
                               int category=res.getInt("idcat");
 
 
-Date d = new Date();               
+                Date d = new Date();               
                Article p=new Article(id,title,content,d,liked,category);
                System.out.println(p.toString());
                arr.add(p);

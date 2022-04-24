@@ -6,6 +6,7 @@ package javafxapplication3;
 
 import Modal.Article;
 import Services.ServiceArticle;
+import Services.ServiceComment;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.application.Application;
@@ -22,7 +23,7 @@ public class JavaFXApplication3 extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("FXMLArticles.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("post.fxml"));
         
         Scene scene = new Scene(root);
         
@@ -34,11 +35,18 @@ public class JavaFXApplication3 extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        launch(args);
+      launch(args);
 ServiceArticle ps = new ServiceArticle();
+      Article t = new Article(32);
+ 
+  System.out.print(ps.getArticle(t).toString());
 List<Article> list = (ArrayList)ps.afficher();
-
-                        list.stream().filter(e -> e.getTitle().equals("mahdi")).forEach(e -> System.out.println(e));
+ServiceComment sc = new ServiceComment();
+   t.setId(32);
+  System.out.print(sc.afficher(t).toString());
+     //ps.supprimer(t);
+    // System.out.print(ps.afficher().toString());
+                       //list.stream().filter(e -> e.getTitle().equals("mahdi")).forEach(e -> System.out.println(e));
 
     }
     
