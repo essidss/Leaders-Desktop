@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.CategorieController">
+    <children>
+        <TableView fx:id="tvCategorie" layoutX="300.0" layoutY="100.0" prefHeight="200.0" prefWidth="217.0">
+            <columns>
+                <TableColumn fx:id="colCategorie" prefWidth="199.0" text="Nom Catégorie" />
+            </columns>
+        </TableView>
+        <TextField fx:id="tfNom" layoutX="55.0" layoutY="168.0" promptText="Saisir le nom" />
+        <Button fx:id="btnAjouter" layoutX="149.0" layoutY="200.0" mnemonicParsing="false" onAction="#ajouterCategorie" text="Ajouter" />
+        <Button fx:id="btnSupprimer" layoutX="342.0" layoutY="313.0" mnemonicParsing="false" onAction="#SupprimerCategorie" prefHeight="43.0" prefWidth="134.0" text="Supprimer" />
+      <Button fx:id="btnAnnonceList" layoutX="434.0" layoutY="37.0" mnemonicParsing="false" onAction="#switchToAnnonce" text="Annonce List" />
+    </children>
+</AnchorPane>
