@@ -14,7 +14,7 @@ import java.sql.SQLException;
  */
 public class ConnectionClass {
    static private  Connection connection;
-final  String URL ="jdbc:mysql://localhost/tutorial";
+final  String URL ="jdbc:mysql://localhost/mahdi";
    final  String LOGIN ="root";
    final  String PASSWORD ="";
    static  private ConnectionClass instance ;

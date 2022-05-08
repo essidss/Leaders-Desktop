@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="464.0" prefWidth="321.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication3.ProfileController">
+   <children>
+      <Button fx:id="btnedit" layoutX="112.0" layoutY="412.0" mnemonicParsing="false" onAction="#editprofile" prefHeight="26.0" prefWidth="98.0" text="edit profile" />
+      <TextField fx:id="labemail" layoutX="53.0" layoutY="195.0" prefHeight="37.0" prefWidth="215.0" />
+      <ImageView fx:id="imgprof" fitHeight="150.0" fitWidth="200.0" layoutX="61.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <TextField fx:id="labusername" layoutX="53.0" layoutY="275.0" prefHeight="37.0" prefWidth="215.0" />
+      <TextField fx:id="labpassword" layoutX="54.0" layoutY="348.0" prefHeight="37.0" prefWidth="215.0" />
+   </children>
+</AnchorPane>

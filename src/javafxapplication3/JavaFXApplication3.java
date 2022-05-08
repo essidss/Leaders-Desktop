@@ -5,9 +5,12 @@
 package javafxapplication3;
 
 import Modal.Article;
+import Modal.User;
 import Services.ServiceArticle;
 import Services.ServiceComment;
+import Services.ServiceUser;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -23,7 +26,7 @@ public class JavaFXApplication3 extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("post.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Front.fxml"));
         
         Scene scene = new Scene(root);
         
@@ -36,17 +39,20 @@ public class JavaFXApplication3 extends Application {
      */
     public static void main(String[] args) {
       launch(args);
-ServiceArticle ps = new ServiceArticle();
-      Article t = new Article(32);
+      /* ServiceUser serviceUser =new ServiceUser();
+       User  user = serviceUser.findByUserId(5);
+  System.out.print(serviceUser.findByUserId(5).toString());*/
+
+/*ServiceArticle ps = new ServiceArticle();
+Date d = new Date();
+      Article t = new Article( "mahdi","zaltni",d,"274585352-1134065580779382-2619872694102213168-n-624eac1879528.jpeg");
+ps.ajouter(t);
  
-  System.out.print(ps.getArticle(t).toString());
+  System.out.print(ps.getArticle().toString());
 List<Article> list = (ArrayList)ps.afficher();
 ServiceComment sc = new ServiceComment();
-   t.setId(32);
-  System.out.print(sc.afficher(t).toString());
-     //ps.supprimer(t);
-    // System.out.print(ps.afficher().toString());
-                       //list.stream().filter(e -> e.getTitle().equals("mahdi")).forEach(e -> System.out.println(e));
+   t.setId(32);*/
+  
 
     }
     

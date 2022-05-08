@@ -6,8 +6,7 @@
 package Services;
 
 import Modal.Comments;
-import Modal.Personne;
-import Modal.Article;
+ import Modal.Article;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

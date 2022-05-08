@@ -13,55 +13,17 @@ import java.lang.Boolean;
  */
 public class Article {
     
-int id;
+int id,user_id;
 private String title,content;
 Date date;
 int liked;
 int idcat;
 String image;
-private int totalReactions;
-    private int nbComments;
-    private int nbShares;
+ int totalReactions;
+ int nbComments;
+ int nbShares;
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public int getTotalReactions() {
-        return totalReactions;
-    }
-
-    public void setTotalReactions(int totalReactions) {
-        this.totalReactions = totalReactions;
-    }
-
-    public int getNbComments() {
-        return nbComments;
-    }
-
-    public void setNbComments(int nbComments) {
-        this.nbComments = nbComments;
-    }
-
-    public int getNbShares() {
-        return nbShares;
-    }
-
-    public void setNbShares(int nbShares) {
-        this.nbShares = nbShares;
-    }
+   
 
 
     public Article(int id, String title, String content, Date date, int liked, int idcat) {
@@ -81,6 +43,38 @@ private int totalReactions;
         this.idcat = idcat;
     }
 
+    public Article(String title, String content, Date date, String image) {
+        this.title = title;
+        this.content = content;
+        this.date = date;
+        this.image = image;
+    }
+
+    public Article(int id, String title, String content, Date date, int liked, int idcat, String image, int totalReactions, int nbComments, int nbShares,int user_id) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.date = date;
+        this.liked = liked;
+        this.idcat = idcat;
+        this.image = image;
+        this.totalReactions = totalReactions;
+        this.nbComments = nbComments;
+        this.nbShares = nbShares;
+        this.user_id = user_id;
+
+    }
+
+    
+
+
+    public Article(String title, String content, String image) {
+        this.title = title;
+        this.content = content;
+        this.image = image;
+    }
+
+
     public Article(int id) {
         this.id = id;
     }
@@ -91,6 +85,14 @@ private int totalReactions;
 
 
     public Article() {
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
 
@@ -137,13 +139,51 @@ private int totalReactions;
         this.idcat = idcat;
     }
 
- 
+  public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public int getTotalReactions() {
+        return totalReactions;
+    }
+
+    public void setTotalReactions(int totalReactions) {
+        this.totalReactions = totalReactions;
+    }
+
+    public int getNbComments() {
+        return nbComments;
+    }
+
+    public void setNbComments(int nbComments) {
+        this.nbComments = nbComments;
+    }
+
+    public int getNbShares() {
+        return nbShares;
+    }
+
+    public void setNbShares(int nbShares) {
+        this.nbShares = nbShares;
+    }
 
 
 
 @Override
     public String toString() {
-        return "Articles{" + "id=" + id + ", nom=" + title + ", prenom=" + content +  ", date=" + date +  ", category=" + idcat +    "\n";
+        return "Articles{" + "id=" + id + ", title=" + title + ", content=" + content +  ", date=" + date +  ", category=" + idcat +    "\n";
     }
 
 }

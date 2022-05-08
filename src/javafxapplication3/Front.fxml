@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="900.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication3.FrontController">
+   <children>
+      <Pane layoutX="23.0" layoutY="14.0" prefHeight="139.0" prefWidth="1258.0" style="-fx-background-color: #172333; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0) dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);">
+         <children>
+            <ImageView fitHeight="203.0" fitWidth="244.0" layoutX="506.0" layoutY="-32.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0) dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0) dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0) dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);">
+               <image>
+                  <Image url="@../Images/logo.png" />
+               </image>
+            </ImageView>
+            <HBox layoutX="37.0" layoutY="20.0" prefHeight="100.0" prefWidth="481.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="453.0">
+                     <children>
+                        <Button fx:id="team" mnemonicParsing="false" onAction="#showTeam" prefHeight="49.0" prefWidth="113.0" style="-fx-border-color: #ffffff; -fx-background-color: #6C3483#6C3483 #6C3483#6C3483; -fx-background-radius: 4px;" text="Team" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets top="26.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="113.0" style="-fx-background-color: #6C3483#6C3483 #6C3483#6C3483; -fx-border-color: #ffffff;" text="Product" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets left="5.0" top="26.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="113.0" style="-fx-background-color: #6C3483#6C3483 #6C3483#6C3483; -fx-border-color: #ffffff;" text="Annoucment" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets left="5.0" top="26.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Button>
+                        <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="113.0" style="-fx-background-color: #6C3483#6C3483 #6C3483#6C3483; -fx-border-color: #ffffff;" text="Marketpalece" textFill="WHITE">
+                           <HBox.margin>
+                              <Insets left="5.0" top="26.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox layoutX="707.0" layoutY="20.0" prefHeight="100.0" prefWidth="541.0">
+               <children>
+                  <Button fx:id="dash" mnemonicParsing="false" onAction="#switchToDash" prefHeight="49.0" prefWidth="113.0" style="-fx-background-color: #6C3483#6C3483 #6C3483#6C3483; -fx-border-color: #ffffff;" text="Dashboard" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="5.0" top="26.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button mnemonicParsing="false" onAction="#showblog" prefHeight="49.0" prefWidth="105.0" style="-fx-background-color: #6C3483#6C3483 #6C3483#6C3483; -fx-border-color: #ffffff;" text="Blog" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="5.0" top="26.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="113.0" style="-fx-background-color: #6C3483#6C3483 #6C3483#6C3483; -fx-border-color: #ffffff;" text="Event" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="5.0" top="26.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="signout" mnemonicParsing="false" onAction="#logout" prefHeight="49.0" prefWidth="113.0" style="-fx-background-color: #6C3483#6C3483 #6C3483#6C3483; -fx-border-color: #ffffff;" text="logout" textFill="WHITE">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="5.0" top="26.0" />
+                     </HBox.margin>
+                  </Button>
+                  <ImageView fx:id="profil" fitHeight="51.0" fitWidth="95.0" onMouseClicked="#switchProfilePopup" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="50.0" top="26.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@../Images/icons8-administrator-male-100.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+      <AnchorPane id="AnchorPane" layoutX="23.0" layoutY="154.0" prefHeight="701.0" prefWidth="1258.0" style="-fx-background-color: #172333; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0) dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);" stylesheets="@../../../JavaFXApplication1/src/javafxapplication1/Stylesheet.css">
+         <children>
+            <AnchorPane prefHeight="702.0" prefWidth="182.0" styleClass="sidebar">
+               <children>
+                  <Label layoutX="8.0" layoutY="-3.0" prefHeight="31.0" prefWidth="173.0" text="OUR Team Members" textFill="#f40e4d">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+            <Label layoutX="205.0" layoutY="93.0" text="PLAY OVER GAME" textFill="#f40e4d">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="141.0" layoutY="128.0" textFill="#f40e4d">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="205.0" layoutY="127.0" prefHeight="39.0" prefWidth="223.0" text="Gaming Playlist" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="28.0" />
+               </font>
+            </Label>
+            <Label layoutX="205.0" layoutY="160.0" prefHeight="39.0" prefWidth="223.0" text="of the Year" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="28.0" />
+               </font>
+            </Label>
+            <Label layoutX="205.0" layoutY="204.0" text="Loream ipsuem dolor sit amet, consecture adispising elit. Donec" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft JhengHei" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="205.0" layoutY="220.0" text=" amet, consecture adispising elit. Donec" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft JhengHei" size="13.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="154.0" fitWidth="282.0" layoutX="202.0" layoutY="320.0" opacity="0.55" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/2w.jpg" />
+               </image>
+               <effect>
+                  <DropShadow color="#685858" />
+               </effect>
+            </ImageView>
+            <ImageView fitHeight="50.0" fitWidth="59.0" layoutX="216.0" layoutY="389.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../JavaFXApplication1/src/images/nb.jpeg" />
+               </image>
+               <effect>
+                  <DropShadow color="#685858" />
+               </effect>
+            </ImageView>
+            <Label layoutX="285.0" layoutY="375.0" text="Latest Releases" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="14.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="35.0" fitWidth="29.0" layoutX="289.0" layoutY="403.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/icons8_circled_pause_24px.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="322.0" layoutY="400.0" text="Starboy by the week" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="320.0" layoutY="414.0" text="14 Songs, 1hr 24min" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="10.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="154.0" fitWidth="282.0" layoutX="489.0" layoutY="320.0" opacity="0.55" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <DropShadow color="#685858" />
+               </effect>
+               <image>
+                  <Image url="@../Images/1.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="50.0" fitWidth="59.0" layoutX="504.0" layoutY="390.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../JavaFXApplication1/src/images/tr.jpg" />
+               </image>
+               <effect>
+                  <DropShadow color="#685858" />
+               </effect>
+            </ImageView>
+            <Label layoutX="574.0" layoutY="379.0" text="Latest Releases" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="14.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="35.0" fitWidth="29.0" layoutX="570.0" layoutY="405.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../JavaFXApplication1/src/images/icons8_circled_pause_24px.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="605.0" layoutY="404.0" text="Starboy by the week" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="603.0" layoutY="418.0" text="14 Songs, 1hr 24min" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="10.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="154.0" fitWidth="282.0" layoutX="749.0" layoutY="320.0" opacity="0.55" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <DropShadow color="#685858" />
+               </effect>
+               <image>
+                  <Image url="@../Images/3e.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="50.0" fitWidth="59.0" layoutX="771.0" layoutY="391.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../JavaFXApplication1/src/images/tr.jpg" />
+               </image>
+               <effect>
+                  <DropShadow color="#685858" />
+               </effect>
+            </ImageView>
+            <Label layoutX="842.0" layoutY="378.0" text="Latest Releases" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="14.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="35.0" fitWidth="29.0" layoutX="841.0" layoutY="407.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../JavaFXApplication1/src/images/icons8_circled_pause_24px.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="872.0" layoutY="405.0" text="Starboy by the week" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="10.0" />
+               </font>
+            </Label>
+            <Label layoutX="872.0" layoutY="418.0" text="14 Songs, 1hr 24min" textFill="WHITE">
+               <font>
+                  <Font name="Microsoft JhengHei Bold" size="10.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" layoutX="196.0" layoutY="528.0" prefHeight="31.0" prefWidth="73.0" style="-fx-background-color: #4E4F56; -fx-background-radius: 4px;">
+               <children>
+                  <Label text="Blues" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Label layoutX="202.0" layoutY="492.0" text="Genres" textFill="WHITE">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER" layoutX="284.0" layoutY="528.0" prefHeight="31.0" prefWidth="98.0" style="-fx-background-color: #4E4F56; -fx-background-radius: 4px;">
+               <children>
+                  <Label text="Classical" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="396.0" layoutY="528.0" prefHeight="31.0" prefWidth="86.0" style="-fx-background-color: #4E4F56; -fx-background-radius: 4px;">
+               <children>
+                  <Label text="country" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="500.0" layoutY="527.0" prefHeight="31.0" prefWidth="73.0" style="-fx-background-color: #4E4F56; -fx-background-radius: 4px;">
+               <children>
+                  <Label text="Dance" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="587.0" layoutY="526.0" prefHeight="31.0" prefWidth="86.0" style="-fx-background-color: #4E4F56; -fx-background-radius: 4px;">
+               <children>
+                  <Label text="Hip-Hope" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="196.0" layoutY="568.0" prefHeight="31.0" prefWidth="118.0" style="-fx-background-color: #4E4F56; -fx-background-radius: 4px;">
+               <children>
+                  <Label text="Sopund Track" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="328.0" layoutY="567.0" prefHeight="31.0" prefWidth="103.0" style="-fx-background-color: #4E4F56; -fx-background-radius: 4px;">
+               <children>
+                  <Label text="Electronic" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <ImageView fitHeight="251.0" fitWidth="389.0" layoutX="810.0" layoutY="46.0" nodeOrientation="RIGHT_TO_LEFT" opacity="0.49" pickOnBounds="true" smooth="false">
+               <image>
+                  <Image url="@../Images/jhjhjh.png" />
+               </image>
+               <effect>
+                  <Reflection />
+               </effect>
+            </ImageView>
+            <HBox alignment="CENTER" layoutX="203.0" layoutY="269.0" prefHeight="31.0" prefWidth="205.0" style="-fx-background-color: #4E4F56; -fx-background-radius: 4px;">
+               <children>
+                  <Label text="Explore Our Gaming Plateform" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

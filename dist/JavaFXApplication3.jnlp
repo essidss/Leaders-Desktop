@@ -8,7 +8,10 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="JavaFXApplication3.jar" size="580471" download="eager" />
+    <jar href="JavaFXApplication3.jar" size="4099883" download="eager" />
+    <jar href="lib\controlsfx-8.40.15.jar" size="1402490" download="eager" />
+    <jar href="lib\controlsfx-samples-8.40.15.jar" size="792003" download="eager" />
+    <jar href="lib\fxsampler-1.0.10.jar" size="30876" download="eager" />
     <jar href="lib\mysql-connector-java-8.0.28.jar" size="2476480" download="eager" />
   </resources>
   <jfx:javafx-desc  width="800" height="600" main-class="javafxapplication3.JavaFXApplication3"  name="JavaFXApplication3" />

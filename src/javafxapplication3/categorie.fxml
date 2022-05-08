@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="box" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="209.0" prefWidth="425.0" spacing="10.0" style="-fx-background-radius: 20;" styleClass="shadow" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication3.CategorieController">
+   <children>
+      <ImageView fx:id="ArticleImage" fitHeight="185.0" fitWidth="164.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/img2.jpg" />
+         </image>
+      </ImageView>
+      <VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="210.0" stylesheets="@styles.css">
+         <children>
+            <Label fx:id="articleName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="67.0" prefWidth="210.0" text="Category&#10; name" textFill="#0a0000">
+               <font>
+                  <Font name="Berlin Sans FB" size="28.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Label>
+            <Label fx:id="date" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="43.0" prefWidth="109.0" text="Date in here" textFill="#2c0909">
+               <font>
+                  <Font name="Berlin Sans FB Demi Bold" size="18.0" />
+               </font>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </Label>
+            <HBox prefHeight="32.0" prefWidth="210.0">
+               <children>
+                  <ImageView fitHeight="46.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/icons8_update_100px.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="46.0" fitWidth="62.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#deletebutton" pickOnBounds="true" preserveRatio="true">
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                     <image>
+                        <Image url="@../img/icons8_delete_50px.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="idcat" prefHeight="45.0" prefWidth="28.0" text="Label" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</HBox>

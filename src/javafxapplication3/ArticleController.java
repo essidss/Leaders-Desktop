@@ -6,21 +6,26 @@ package javafxapplication3;
 
 import Connectivity.ConnectionClass;
 import Modal.Article;
+import Modal.Category;
 import Modal.Post;
 import Modal.Reactions;
+import Modal.Team;
+import Modal.User;
+import Services.LoginSession;
 import Services.ServiceArticle;
+import Services.ServiceUser;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -32,7 +37,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -40,6 +45,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import org.controlsfx.control.Rating;
 
 /**
  * FXML Controller class
@@ -63,11 +69,32 @@ public class ArticleController implements Initializable {
     private VBox box;
     @FXML
     private ImageView bookimage;
+    @FXML
+    private ImageView delete;
 
+    @FXML
+    private ImageView update;
+ @FXML
+    private Label view;
     @FXML
     private Label booktitle;
     @FXML
+    private Label username;
+    @FXML
+    private Label likecount;
+    @FXML
     private Label reactionName;
+    @FXML
+    private Label idArticle;
+    @FXML
+    private Label iduser;
+    @FXML
+    private Label msg;
+    @FXML
+    private TextField textrate;
+
+    @FXML
+    private Rating rate;
     @FXML
     private Label bookauthor;
     private String[] colors = {"B9E5FF'", "BDB2FE", "FB9AA8", "FF5056"};
@@ -75,12 +102,39 @@ public class ArticleController implements Initializable {
 
     @FXML
     private Button show;
+    @FXML
+    private Button deletebutton;
     private Post post;
     private long startTime = 0;
-
+    private Parent root;
+    private Stage stage;
+    private Scene scene;
     @Override
 
     public void initialize(URL url, ResourceBundle rb) {
+        rating();
+        msg.setVisible(false);
+        textrate.setVisible(false);
+
+    }
+
+    @FXML
+    public void rating() {
+
+        rate.ratingProperty().addListener((ObservableValue<? extends Number> observable, Number oldValue, Number newValue) -> {
+            msg.setText("Rating : " + newValue);
+            textrate.setText(String.valueOf(newValue));
+
+        });
+
+    }
+
+    @FXML
+    void rate(MouseEvent event) {
+        
+        String query = "INSERT INTO rating ( nbr_etoiles, post_id ) VALUES ('" + textrate.getText() + "' ,(SELECT id FROM article WHERE id=" + idArticle.getText() + " ))";
+        executeQuery(query);
+
     }
 
     public void onLikeContainerPressed(MouseEvent me) {
@@ -104,10 +158,7 @@ public class ArticleController implements Initializable {
         reactionName.setText(reaction.getName());
         reactionName.setTextFill(Color.web(reaction.getColor()));
 
-        
         currentReaction = reaction;
-
-       
 
         //nbReactions.setText(String.valueOf(post.getTotalReactions()));
     }
@@ -118,7 +169,7 @@ public class ArticleController implements Initializable {
         Statement st;
         ResultSet rs;
 
-        try { 
+        try {
             st = cnx.createStatement();
             rs = st.executeQuery(query);
             Article articles;
@@ -127,40 +178,54 @@ public class ArticleController implements Initializable {
                 articleList.add(articles);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
         return articleList;
     }
 
     public void setData(Article article) {
-
-      
-        ObservableList<Article> list = getArticleList();
-        ServiceArticle sp = new ServiceArticle();
-        Date date = new Date();
-        Article p1 = new Article(19, "aa", "bb", date, 0, 0);
-        // Article p = new Article(getArticleList());
+        Image image = null;
+        try {
+            System.out.println("C:\\Users\\hp\\Documents\\NetBeansProjects\\JavaFXApplication3\\src\\img\\" + article.getImage());
+            image = new Image(new FileInputStream("C:\\Users\\hp\\Documents\\NetBeansProjects\\JavaFXApplication3\\src\\img\\" + article.getImage()));
+        } catch (FileNotFoundException ex) {
+        }
+        // ServiceUser serviceUser =new ServiceUser();
+        // User  user = serviceUser.findByUserId(article.getUser_id());
+        bookimage.setImage(image);
         booktitle.setText(article.getTitle());
-        bookauthor.setText(article.getContent());
-         
- 
-        /*        for (Iterator<Article> i = articles.iterator(); i.hasNext();) {
-            Article item = i.next();
-          booktitle.setText(item.getTitle());
-            bookauthor.setText(item.getContent());
-           
-       }*/
-        booktitle.setLabelFor(bookimage);
-DropShadow drop_shadow = new DropShadow(10, Color.RED);
-box.setEffect(drop_shadow);
+//        username.setText(user.getUsername());
 
-//        Image image = new Image(getClass().getResourceAsStream(article.getImage()));
-        //       bookimage.setImage(image);
+        //  System.out.println(""+user.getUsername());
+//        bookauthor.setText(article.getContent());
+        //booktitle.setVisible(false);
+        idArticle.setText((String.valueOf(article.getId())));
+        idArticle.setVisible(false);
+        iduser.setText((String.valueOf(article.getUser_id())));
+        //iduser.setVisible(false);
+                view.setText((String.valueOf(article.getNbShares())));
+
+        if (LoginSession.UID == article.getUser_id()) {
+            delete.setVisible(true);
+            update.setVisible(true);
+        } else {
+            delete.setVisible(false);
+            update.setVisible(false);
+        }
+
+        //idArticle.setText(Integer.toString(article.getId()));
+        //booktitle.setLabelFor(bookimage);
+        //DropShadow drop_shadow = new DropShadow(10, Color.RED);
+        //box.setEffect(drop_shadow);
+        //bookimage.setImage(article.getImage());
+        // Image image = new Image(getClass().getResourceAsStream(article.getImage()));
+        //  bookimage.setImage(image);
         // booktitle.setText(p1.getTitle());
         // bookauthor.setText(p1.getContent());
-
         // date.setText(article.getDate().toString());
     }
+
+ 
 
     public static Article getArticlers(ResultSet rs) throws SQLException {
         Article emp = null;
@@ -174,23 +239,107 @@ box.setEffect(drop_shadow);
         return emp;
     }
 
-@FXML
-    private void show(ActionEvent event) throws IOException {
-      Parent home_page_parent = FXMLLoader.load(getClass().getResource("post.fxml"));
-     Scene home_page_scene = new Scene(home_page_parent);
-     Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    public void setCategorie(Category c) {
+        booktitle.setText(c.getNom());
+        //bookauthor.setText(c.getContent());
+        //booktitle.setVisible(false);
+        idArticle.setText((String.valueOf(c.getIdcat())));
+        //idArticle.setVisible(false);
 
-     app_stage.hide(); //optional
-     app_stage.setScene(home_page_scene);
-     app_stage.show();
-    //  String source2 = event.getPickResult().getIntersectedNode().getId(); //returns JUST the id of the object that was clicked
+    }
 
-       /* FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Addblog.fxml"));
+    @FXML
+    private void show(MouseEvent event) throws IOException {
+
+        // Parent
+        //home_page_parent = FXMLLoader.load(getClass().getResource("post.fxml"));
+        String title = booktitle.getText();
+        int id = Integer.parseInt(idArticle.getText());
+        ServiceArticle sp = new ServiceArticle();
+        Article article = sp.findByArticleId(id);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("post.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        sp.setView(id);
+        //FXMLLoader loader = new FXMLLoader(getClass().getResource("post.fxml"));
+        //root = loader.load();
+        PostController postcontroller = fxmlLoader.getController();
+        postcontroller.setData(article);
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root1));
+        stage.show();
+        //scene = new Scene(root);
+        //stage.setScene(scene);
+        // stage.show();
+        //  Scene home_page_scene = new Scene(home_page_parent);
+        //  Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        // app_stage.hide(); //optional
+        // app_stage.setScene(home_page_scene);
+        // app_stage.show();
+        //  String source2 = event.getPickResult().getIntersectedNode().getId(); //returns JUST the id of the object that was clicked
+
+        /* FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Addblog.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root1));  
         stage.show();*/
+    }
 
+    public void deletebutton() {
+
+        String query = "UPDATE `article` SET `archived`='" + 1 + "' WHERE id=" + idArticle.getText() + "";
+        executeQuery(query);
+
+    }
+
+    @FXML
+    public void updatebutton(MouseEvent event) {
+        try {
+            String title = booktitle.getText();
+            int id = Integer.parseInt(idArticle.getText());
+            ServiceArticle sp = new ServiceArticle();
+
+            Article article = sp.findByArticleId(id);
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Modifierblog.fxml"));
+            root = loader.load();
+            ModifierblogController modif = loader.getController();
+            modif.setData(article);
+//           PostController postcontroller = loader.getController();
+            //postcontroller.setArticle(title);
+            // postcontroller.setData(article);
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+    }
+
+    public void executeQuery(String query) {
+        Connection conn = getConnection();
+        Statement st;
+        try {
+            st = cnx.createStatement();
+            st.executeUpdate(query);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Connection getConnection() {
+        Connection conn;
+        try {
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/tutorial", "root", "");
+            return conn;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
 }

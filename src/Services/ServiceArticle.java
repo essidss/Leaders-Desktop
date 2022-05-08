@@ -5,8 +5,7 @@
  */
 package Services;
 
-import Modal.Personne;
-import Modal.Article;
+ import Modal.Article;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,6 +28,8 @@ import javafx.collections.ObservableList;
  */
 public class ServiceArticle implements IService<Article>{
 private Connection cnx = ConnectionClass.getInstance().getCnx() ;
+        ObservableList<Article> obList = FXCollections.observableArrayList();
+
    
     @Override
     public void ajouter(Article t) {
@@ -37,7 +38,7 @@ DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 String date = dateFormat.format(d1);
 String dc = date;
     try {
-        String querry= "INSERT INTO article(`title`, `content` , `date`) VALUES ('"+t.getTitle()+"','"+t.getContent()+"','"+dc+"')";
+        String querry= "INSERT INTO article(`title`, `content` ,`image`, `date`,`user_id`) VALUES ('"+t.getTitle()+"','"+t.getContent()+"','"+t.getImage()+"','"+dc+"','"+t.getUser_id()+"')";
         Statement stm = cnx.createStatement();
  
     stm.executeUpdate(querry);
@@ -77,11 +78,13 @@ String dc = date;
     return postss;
     }
 
-    public List<Article> getArticle(Article t) {
+    public ObservableList getArticle() {
  List<Article> postss = new ArrayList();
+        ObservableList<Article> obList = FXCollections.observableArrayList();
+
         try {
        
-            String querry = "SELECT * FROM `article` WHERE archived='" + 0 + "' and id=" + t.getId() + " ";
+            String querry = "SELECT * FROM `article` WHERE archived='" + 0 + "' ";
         Statement stm = cnx.createStatement();
             ResultSet rs= stm.executeQuery(querry);
         while (rs.next()){
@@ -89,22 +92,50 @@ String dc = date;
             
             p.setId(rs.getInt(1));
             p.setTitle(rs.getString("title"));
-            p.setContent(rs.getString(3));
+            p.setContent(rs.getString("content"));
             p.setDate(rs.getDate("date"));
             p.setIdcat(rs.getInt("idcat"));
-            postss.add(p);
+            obList.add(p);
         }
         
         
         
-        return postss;
+        return obList;
     } catch (SQLException ex) {
         }
-    return postss;
+    return obList;
     }
 
     
+public Article findByArticleId(int id){
+              try {
+       String query2="SELECT * FROM `article` WHERE id="+id;
 
+Statement stm = cnx.createStatement();
+//                PreparedStatement smt = cnx.prepareStatement(query2);
+//                smt.setInt(1, id);
+                Article p = new Article();
+                ResultSet rs= stm.executeQuery(query2);
+                while(rs.next()){
+                  // p= new Article(rs.getInt("id"),rs.getString("title"),rs.getString(3),rs.getDate("date"),rs.getInt("idcat"));
+            p.setId(rs.getInt("id"));
+            p.setTitle(rs.getString("title"));
+            p.setContent(rs.getString(3));
+            p.setDate(rs.getDate("date"));
+            p.setIdcat(rs.getInt("idcat"));
+            p.setImage(rs.getString("image"));
+            p.setTotalReactions(rs.getInt("totalReactions"));
+            p.setNbComments(rs.getInt("nbComments"));
+            p.setNbShares(rs.getInt("nbShares"));
+
+                              return p;
+
+                }
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+                }
+              return null;
+    }
 
     @Override
     public void modifier(Article t) {
@@ -216,6 +247,27 @@ public List<Article> recherche(String entry)throws SQLException{
 
 
     }
+
+ public void Dislikedarticle(Article t) {
+
+  
+          
+            try {
+                String req = "UPDATE `article` SET`liked`=0 WHERE id=?";
+ 
+                PreparedStatement ste = cnx.prepareStatement(req);
+                ste.setInt(1, t.getId());
+
+                ste.executeUpdate();
+                System.out.println(" l'article est disliké !!!");
+            } catch (SQLException ex) {
+                System.out.println(ex.getMessage());
+            }
+
+      
+
+
+    }
     public Article Maxliked() {
 
         Article post = new Article();
@@ -240,10 +292,36 @@ public List<Article> recherche(String entry)throws SQLException{
 
     }
 
-public void addtocategory(Article t)
+public void addtocategory(Article t,String category)
 {
+  try {
+  String req ="UPDATE article A SET A.idcat= (SELECT idcat FROM category C WHERE C.nom='"+category+"') WHERE A.title=?";
+
+            PreparedStatement ste = cnx.prepareStatement(req);
+            
+ 
+            ste.setString(1,t.getTitle());
+ 
+            ste.executeUpdate();
+            System.out.println(" Article affecte' to category !!!");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } 
+
 }
 
+public void setView(int id){
+try {
+  String req ="UPDATE article  SET nbShares=nbShares+1 WHERE id="+id;
+
+            PreparedStatement ste = cnx.prepareStatement(req);
+
+            ste.executeUpdate();
+            System.out.println(" Article affecte' to category !!!");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        } 
+}
 }
     
 

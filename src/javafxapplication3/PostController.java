@@ -11,15 +11,21 @@ import javafx.scene.paint.Color;
 import Modal.Account;
 import Modal.Article;
 import Modal.Post;
- import Modal.Reactions;
+import Modal.Reactions;
 import Services.ServiceArticle;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import static java.lang.String.format;
 
 import java.net.URL;
-import java.util.ArrayList;
+import java.text.DateFormat;
+import static java.text.MessageFormat.format;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.ResourceBundle;
 
 public class PostController implements Initializable {
+
     @FXML
     private ImageView imgProfile;
 
@@ -85,33 +91,34 @@ public class PostController implements Initializable {
 
     private long startTime = 0;
     private Reactions currentReaction;
-   // private Post post;
+    // private Post post;
     private Article post;
+    final DateFormat format = DateFormat.getInstance();
 
     @FXML
-    public void onLikeContainerPressed(MouseEvent me){
+    public void onLikeContainerPressed(MouseEvent me) {
         startTime = System.currentTimeMillis();
     }
 
     @FXML
-    public void onLikeContainerMouseReleased(MouseEvent me){
-        if(System.currentTimeMillis() - startTime > 500){
+    public void onLikeContainerMouseReleased(MouseEvent me) {
+        if (System.currentTimeMillis() - startTime > 500) {
             reactionsContainer.setVisible(true);
-        }else {
-            if(reactionsContainer.isVisible()){
+        } else {
+            if (reactionsContainer.isVisible()) {
                 reactionsContainer.setVisible(false);
             }
-            if(currentReaction == Reactions.NON){
+            if (currentReaction == Reactions.NON) {
                 setReaction(Reactions.LIKE);
-            }else{
+            } else {
                 setReaction(Reactions.NON);
             }
         }
     }
 
     @FXML
-    public void onReactionImgPressed(MouseEvent me){
-        switch (((ImageView) me.getSource()).getId()){
+    public void onReactionImgPressed(MouseEvent me) {
+        switch (((ImageView) me.getSource()).getId()) {
             case "imgLove":
                 setReaction(Reactions.LOVE);
                 break;
@@ -137,86 +144,122 @@ public class PostController implements Initializable {
         reactionsContainer.setVisible(false);
     }
 
-    public void setReaction(Reactions reaction){
+    public void setReaction(Reactions reaction) {
+            ServiceArticle sa = new ServiceArticle();
+
         Image image = new Image(getClass().getResourceAsStream(reaction.getImgSrc()));
         imgReaction.setImage(image);
         reactionName.setText(reaction.getName());
         reactionName.setTextFill(Color.web(reaction.getColor()));
 
-        if(currentReaction == Reactions.NON){
+        if (currentReaction == Reactions.NON) {
             post.setTotalReactions(post.getTotalReactions() + 1);
+            sa.likedarticle(post); 
+       // post.setLiked(1);
+
         }
 
         currentReaction = reaction;
 
-        if(currentReaction == Reactions.NON){
+        if (currentReaction == Reactions.NON) {
             post.setTotalReactions(post.getTotalReactions() - 1);
+            sa.Dislikedarticle(post);
         }
 
         nbReactions.setText(String.valueOf(post.getTotalReactions()));
     }
 
-    public void setData(Article post){
+    public void setData(Article post) {
         this.post = post;
         Image img;
-       // img = new Image(getClass().getResourceAsStream(post.getAccount().getProfileImg()));
-       // imgProfile.setImage(img);
-        /*username.setText(post.getAccount().getName());
+        // img = new Image(getClass().getResourceAsStream(post.getAccount().getProfileImg()));
+        //imgProfile.setImage(img);
+        /* username.setText(post.getAccount().getName());
         if(post.getAccount().isVerified()){
             imgVerified.setVisible(true);
         }else{
             imgVerified.setVisible(false);
         }*/
+        final Calendar cal = Calendar.getInstance();
 
-        date.setText(post.getDate().toString());
- 
+        date.setText(format.format(cal.getTime()));
+
         //audience.setImage(img);
 
-       /* if(post.getCaption() != null && !post.getCaption().isEmpty()){
+        /*if(post.getCaption() != null && !post.getCaption().isEmpty()){
             caption.setText(post.getCaption());
         }else{
             caption.setManaged(false);
         }*/
-
-        if(post.getImage() != null && !post.getImage().isEmpty()){
+       /* if (post.getImage() != null && !post.getImage().isEmpty()) {
             img = new Image(getClass().getResourceAsStream(post.getImage()));
             imgPost.setImage(img);
-        }else{
-            imgPost.setVisible(false);
-            imgPost.setManaged(false);
+        } else {
+            imgPost.setVisible(true);
+            imgPost.setManaged(true);
+        }*/
+          
+        Image image = null;
+        try {
+            System.out.println("C:\\Users\\hp\\Documents\\NetBeansProjects\\JavaFXApplication3\\src\\img\\" + post.getImage());
+            image = new Image(new FileInputStream("C:\\Users\\hp\\Documents\\NetBeansProjects\\JavaFXApplication3\\src\\img\\" + post.getImage()));
+        } catch (FileNotFoundException ex) {
+            System.out.println(ex);
         }
-caption.setText(post.getContent());
- 
-        nbReactions.setText(String.valueOf(post.getTotalReactions()));
+        System.out.println(""+image);
+         // img= post.getImage();
+        //System.out.println(""+img);
+
+
+
+        imgPost.setImage(image);
+        caption.setText(post.getContent());
+
+        nbReactions.setText(String.valueOf(post.getId()));
+        System.out.println("nb"+nbReactions);
         nbComments.setText(post.getNbComments() + " comments");
-        nbShares.setText(post.getNbShares()+" shares");
+        nbShares.setText(post.getNbShares() + " shares");
 
         currentReaction = Reactions.NON;
     }
 
     private Article getPost() {
         Post post = new Post();
-        Article article = new Article(32);
- 
-      Account account = new Account();
+        Article article = new Article();
+
+        Account account = new Account();
         account.setName("Mahmoud Hamwi");
         account.setProfileImg("/img/user.png");
         account.setVerified(true);
         post.setAccount(account);
         Date d = new Date();
-        article.setContent(article.getContent());
-        article.setDate(d);
+        // article.setContent(article.getContent());
+        // article.setDate(d);
         post.setCaption("Hello everybody.");
         post.setImage("/img/img2.jpg");
         post.setTotalReactions(10);
         post.setNbComments(2);
         post.setNbShares(3);
+        article.setNbComments(10);
 
         return article;
+    }
+
+    public void setArticle(Article article) {
+        //Article articles = new Article(id);
+        // caption.setText(String.valueOf(id));
+        caption.setText(article.getTitle());
+
+        nbReactions.setText(String.valueOf(article.getTotalReactions()));
+        nbComments.setText(article.getNbComments() + " comments");
+        nbShares.setText(article.getNbShares() + " shares");
+
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         setData(getPost());
+
     }
+
 }

@@ -6,7 +6,8 @@ package javafxapplication3;
 
 import Connectivity.ConnectionClass;
 import Modal.Article;
-import Services.ServiceArticle;
+import Services.ServiceTeam;
+import Services.ServiceUser;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -20,7 +21,6 @@ import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -30,18 +30,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -82,24 +79,6 @@ public class FXMLArticlesController implements Initializable {
     private Button deleteButton;
 
     @FXML
-    private TableView<Article> TableView;
-
-    @FXML
-    private TableColumn<Article, Integer> idColumn;
-
-    @FXML
-    private TableColumn<Article, String> titleColumn;
-
-    @FXML
-    private TableColumn<Article, String> authorColumn;
-
-    @FXML
-    private TableColumn<Article, Integer> yearColumn;
-
-    @FXML
-    private TableColumn<Article, Integer> pagesColumn;
-
-    @FXML
     private ImageView ArticleImage;
     @FXML
     private GridPane bookContainer;
@@ -112,7 +91,7 @@ public class FXMLArticlesController implements Initializable {
 
     @FXML
     private Label date;
-  @FXML
+    @FXML
     private Button addblog;
 
     @FXML
@@ -121,20 +100,25 @@ public class FXMLArticlesController implements Initializable {
     private String[] colors = {"B9E5FF'", "BDB2FE", "FB9AA8", "FF5056"};
     @FXML
     private HBox cardlayout;
- Popup popup = new Popup();
-  
- 
+    Popup popup = new Popup();
+ private Stage stage; 
+    private Scene scene;
+    private Parent root;
+    
+    ServiceTeam serviceTeam =new ServiceTeam();
+    ServiceUser serviceUser =new ServiceUser();
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         recentlyadded = new ArrayList<>(recentlyadded());
         articles = new ArrayList<>(getArticleList());
- 
+
         int colum = 0;
         int row = 1;
         try {
-            
-  for (Article value : recentlyadded) {
+
+            for (Article value : recentlyadded) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("card.fxml"));
 
@@ -143,15 +127,15 @@ public class FXMLArticlesController implements Initializable {
                 cardController.setArticle(value);
                 cardlayout.getChildren().add(cardBox);
                                   }
-        for (Iterator<Article> i = articles.iterator(); i.hasNext();) {
-                  Article item = i.next();
+            for (Iterator<Article> i = articles.iterator(); i.hasNext();) {
+                Article item = i.next();
                 FXMLLoader fxmlLoader1 = new FXMLLoader();
                 fxmlLoader1.setLocation(getClass().getResource("article.fxml"));
                 VBox bookBox = fxmlLoader1.load();
                 ArticleController articleController = fxmlLoader1.getController();
-                 //System.out.println(item);
-                articleController.setData(item );
-                
+                //System.out.println(item);
+                articleController.setData(item);
+
                 if (colum == 5) {
                     colum = 0;
                     row++;
@@ -162,31 +146,48 @@ public class FXMLArticlesController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
         // TODO  
         //showArticles();
- 
-    
-
     }
 
+    @FXML
+    private void showcategorie(MouseEvent event) throws IOException 
+   {
 
 
- @FXML
+        /*FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CategorieList.fxml"));
+        Parent root1 = (Parent) fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root1));  
+        stage.show();*/
+        Parent window3; //we need to load the layout that we want to swap
+        window3 = FXMLLoader.load(getClass().getResource("CategorieList.fxml"));
+        Scene newScene; //then we create a new scene with our new layout
+        newScene = new Scene(window3);
+        Stage mainWindow; //Here is the magic. We get the reference to main Stage.
+        mainWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        mainWindow.setScene(newScene); //here we simply set the new scene
+
+   }
+
+    @FXML
     private void addblog(ActionEvent event) throws IOException {
-     System.out.println("javafxapplication3.FXMLArticlesController.addblog()");
+        /* System.out.println("javafxapplication3.FXMLArticlesController.addblog()");
      Parent home_page_parent = FXMLLoader.load(getClass().getResource("Addblog.fxml"));
      Scene home_page_scene = new Scene(home_page_parent);
      Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
      app_stage.hide(); //optional
      app_stage.setScene(home_page_scene);
-     app_stage.show();
-
-       /* FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Addblog.fxml"));
+     app_stage.show();*/
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Addblog.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         Stage stage = new Stage();
-        stage.setScene(new Scene(root1));  
-        stage.show();*/
+        stage.setScene(new Scene(root1));
+        stage.show();
 
     }
 
@@ -196,7 +197,7 @@ public class FXMLArticlesController implements Initializable {
         article.setTitle("Rich dad poor dad");
         article.setImage("/img/glad.jpg");
         article.setContent("MAHDI \nZALTNI");
-Date d =new Date();
+        Date d = new Date();
         article.setDate(d);
 
         ls.add(article);
@@ -216,36 +217,6 @@ Date d =new Date();
 
     }
 
-    private List<Article> articles() {
-
-        List<Article> ls = new ArrayList<>();
-        ObservableList<Article> list = getArticleList();
-
-        /*Article article = new Article();
-           Date date = new Date();
-        Article p1 = new Article("mahdi", "zaltni", date, 0, 0);
-
-        p1.setTitle(p1.getTitle());
-        article.setImage("/img/glad.jpg");
-        article.setContent("MAHDI \nZALTNI");
-        ls.add(article);
-
-
-        article = new Article();
-        article.setTitle("The Hound Of The Baskervilles ");
-        article.setImage("/img/mahdi.jpg");
-        article.setContent("ARTHUR \nCONAN DWAYNE");
-        ls.add(article);
-
-        article = new Article();
-        article.setTitle("les Miserables ");
-        article.setImage("/img/mahdi.jpg");
-        article.setContent("ARTHUR \nCONAN DWAYNE");
-        ls.add(article);*/
-        return list;
-
-    }
-
     public ObservableList<Article> getArticleList() {
         ObservableList<Article> articleList = FXCollections.observableArrayList();
         String query = "SELECT * FROM article WHERE archived='" + 0 + "' ";
@@ -257,7 +228,7 @@ Date d =new Date();
             rs = st.executeQuery(query);
             Article articles;
             while (rs.next()) {
-                articles = new Article(rs.getInt("id"), rs.getString("title"), rs.getString("content"), rs.getDate("date"), rs.getInt("liked"), rs.getInt("idcat"));
+                articles = new Article(rs.getInt("id"), rs.getString("title"), rs.getString("content"), rs.getDate("date"), rs.getInt("liked"), rs.getInt("idcat"),rs.getString("image"),rs.getInt("totalReactions"),rs.getInt("nbComments"),rs.getInt("nbShares"),rs.getInt("user_id"));
                 articleList.add(articles);
             }
         } catch (Exception e) {
@@ -265,19 +236,44 @@ Date d =new Date();
         }
         return articleList;
     }
-
-    public void showArticles() {
-        ObservableList<Article> list = getArticleList();
-
-        idColumn.setCellValueFactory(new PropertyValueFactory<Article, Integer>("id"));
-        titleColumn.setCellValueFactory(new PropertyValueFactory<Article, String>("title"));
-        authorColumn.setCellValueFactory(new PropertyValueFactory<Article, String>("content"));
-        yearColumn.setCellValueFactory(new PropertyValueFactory<Article, Integer>("date"));
-        pagesColumn.setCellValueFactory(new PropertyValueFactory<Article, Integer>("liked"));
-
-        TableView.setItems(list);
+public void switchToDash(ActionEvent event) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setTitle("Dash");
+        stage.setScene(scene);
+        stage.show();  
+        
+    }  
+      public void Home(MouseEvent event) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("Front.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setTitle("Dash");
+        stage.setScene(scene);
+        stage.show();  
+        
+    }  
+    public void switchProfilePopup() throws IOException{
+        
+        FXMLLoader fxmlloader = new FXMLLoader (getClass().getResource("Profile.fxml"));
+        Parent root1= (Parent) fxmlloader.load();
+        Stage stage = new Stage();
+        stage.initStyle(StageStyle.DECORATED);
+        stage.setTitle("Profile");
+        stage.setScene(new Scene(root1));
+        stage.show();
+    }  
+    @FXML
+    public void logout(ActionEvent event) throws IOException{
+        serviceUser.logout();
+        root = FXMLLoader.load(getClass().getResource("LoginInterface.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setTitle("Dash");
+        stage.setScene(scene);
+        stage.show();    
     }
-
-
+    
 
 }

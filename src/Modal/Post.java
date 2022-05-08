@@ -1,8 +1,6 @@
 package Modal;
 
-/**
- * Created by Mahmoud Hamwi on 17-Feb-21.
- */
+
 public class Post {
     private Account account;
      private String date;

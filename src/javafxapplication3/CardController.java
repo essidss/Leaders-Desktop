@@ -5,6 +5,7 @@
 package javafxapplication3;
 
 import Modal.Article;
+import Modal.Category;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -34,7 +35,6 @@ public class CardController implements Initializable {
      */
     @FXML
     private HBox box;
-   @FXML
     private ImageView ArticleImage;
 
     @FXML
@@ -43,11 +43,8 @@ public class CardController implements Initializable {
     @FXML
     private Label author;
 
-    @FXML
     private Label date;
 
-    @FXML
-    private ImageView nbrelikes;
 
     private   String[] colors = {"B9E5FF'", "BDB2FE", "FB9AA8", "FF5056"};
     
@@ -61,17 +58,13 @@ public class CardController implements Initializable {
     }
 
  public void setArticle(Article article) {
-        Image image = new Image(getClass().getResourceAsStream(article.getImage()));
-        ArticleImage.setImage(image);
+        //Image image = new Image(getClass().getResourceAsStream(article.getImage()));
+       // ArticleImage.setImage(image);
         articleName.setText(article.getTitle());
         author.setText(article.getContent());
-        Date d = new Date();
-        date.setText(d.toString());
-       box.setStyle("-fx-background-color:#" + colors[(int)(Math.random()*colors.length)]+";" + 
-" -fx-backgound-radius:30;" + 
-"-fx-effect:dropShadow(three-pass-box,rgba(0,0,0,0)10,0 , 0 ,10);");
+        // box.setStyle("-fx-background-color:#" + colors[(int)(Math.random()*colors.length)]);
   }
 
-   
+  
 
 }
