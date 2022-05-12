@@ -9,11 +9,8 @@ import Modal.Article;
 import Modal.Category;
 import Modal.Post;
 import Modal.Reactions;
-import Modal.Team;
-import Modal.User;
 import Services.LoginSession;
 import Services.ServiceArticle;
-import Services.ServiceUser;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -25,10 +22,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -38,14 +36,20 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 import org.controlsfx.control.Rating;
+import org.json.JSONObject;
 
 /**
  * FXML Controller class
@@ -67,14 +71,15 @@ public class ArticleController implements Initializable {
     private ImageView imgReaction;
     @FXML
     private VBox box;
-    @FXML
+   
+@FXML
     private ImageView bookimage;
     @FXML
     private ImageView delete;
 
     @FXML
     private ImageView update;
- @FXML
+    @FXML
     private Label view;
     @FXML
     private Label booktitle;
@@ -109,14 +114,15 @@ public class ArticleController implements Initializable {
     private Parent root;
     private Stage stage;
     private Scene scene;
+
     @Override
 
     public void initialize(URL url, ResourceBundle rb) {
         rating();
         msg.setVisible(false);
         textrate.setVisible(false);
-
-    }
+ 
+     }
 
     @FXML
     public void rating() {
@@ -129,11 +135,39 @@ public class ArticleController implements Initializable {
 
     }
 
+public Boolean ISRATE(int id,int iduser)
+{
+try
+{
+    Statement stm = cnx.createStatement();
+    String querry  = "SELECT * FROM `rating` WHERE user_id='"+iduser+"' and post_id="+ idArticle.getText() +"";
+                 ResultSet rs= stm.executeQuery(querry);
+if (rs.isBeforeFirst()){
+    System.out.println("rate already exists");
+return true;
+}
+
+}catch (SQLException ex) {
+        System.out.print(ex);
+        }
+return false;
+
+}
     @FXML
     void rate(MouseEvent event) {
-        
-        String query = "INSERT INTO rating ( nbr_etoiles, post_id ) VALUES ('" + textrate.getText() + "' ,(SELECT id FROM article WHERE id=" + idArticle.getText() + " ))";
+ 
+int id = Integer.parseInt(String.valueOf(idArticle.getText()));
+        if (ISRATE(id,LoginSession.UID)==true)
+{
+    System.out.println("vous avez deja rater cet article");
+      String query1 = "update rating  set nbr_etoiles='" + textrate.getText() + "' WHERE post_id=" + idArticle.getText() + " and user_id='"+LoginSession.UID+"'";
+        executeQuery(query1);
+}  
+
+if (ISRATE(157,LoginSession.UID)==false) {
+         String query = "INSERT INTO rating ( nbr_etoiles, post_id,user_id ) VALUES ('" + textrate.getText() + "' ,(SELECT id FROM article WHERE id=" + idArticle.getText() + " ),'"+LoginSession.UID+"')";
         executeQuery(query);
+}
 
     }
 
@@ -193,17 +227,17 @@ public class ArticleController implements Initializable {
         // ServiceUser serviceUser =new ServiceUser();
         // User  user = serviceUser.findByUserId(article.getUser_id());
         bookimage.setImage(image);
-        booktitle.setText(article.getTitle());
-//        username.setText(user.getUsername());
 
+         booktitle.setText(article.getTitle());
+//        username.setText(user.getUsername());
         //  System.out.println(""+user.getUsername());
 //        bookauthor.setText(article.getContent());
         //booktitle.setVisible(false);
         idArticle.setText((String.valueOf(article.getId())));
         idArticle.setVisible(false);
         iduser.setText((String.valueOf(article.getUser_id())));
-        //iduser.setVisible(false);
-                view.setText((String.valueOf(article.getNbShares())));
+        iduser.setVisible(false);
+        view.setText((String.valueOf(article.getNbShares())));
 
         if (LoginSession.UID == article.getUser_id()) {
             delete.setVisible(true);
@@ -225,7 +259,31 @@ public class ArticleController implements Initializable {
         // date.setText(article.getDate().toString());
     }
 
- 
+//    public String cencor(String str) {
+//        String filtr = "";
+//        try {
+//            OkHttpClient client = new OkHttpClient().newBuilder().build();
+//
+//            MediaType mediaType = MediaType.parse("text/plain");
+//            RequestBody body = RequestBody.create(mediaType, str);
+//
+//            Request request = new Request.Builder()
+//                    .url("https://api.apilayer.com/bad_words?censor_character=*")
+//                    .addHeader("apikey", "bK0CAJq4AYqZCOPxebV2DinhTaCiD0LR")
+//                    .method("POST", body)
+//                    .build();
+//            Response response = client.newCall(request).execute();
+//            JSONObject jArray = new JSONObject(response.body().string());
+//            //               System.out.println(response.body().string());
+//            String deviceId = (String) jArray.toString();
+//            System.out.println(deviceId);
+//            return jArray.get("censored_content").toString();
+//
+//        } catch (IOException ex) {
+//            ex.printStackTrace();
+//        }
+//        return filtr;
+//    }
 
     public static Article getArticlers(ResultSet rs) throws SQLException {
         Article emp = null;
@@ -290,6 +348,8 @@ public class ArticleController implements Initializable {
 
         String query = "UPDATE `article` SET `archived`='" + 1 + "' WHERE id=" + idArticle.getText() + "";
         executeQuery(query);
+box.getChildren().clear();
+
 
     }
 
@@ -302,16 +362,26 @@ public class ArticleController implements Initializable {
 
             Article article = sp.findByArticleId(id);
 
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("Modifierblog.fxml"));
+//            root = loader.load();
+//            ModifierblogController modif = loader.getController();
+//            modif.setData(article);
+////           PostController postcontroller = loader.getController();
+//            //postcontroller.setArticle(title);
+//            // postcontroller.setData(article);
+//            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//            scene = new Scene(root);
+//            stage.setScene(scene);
+//            stage.show();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Modifierblog.fxml"));
-            root = loader.load();
+            Parent root = (Parent) loader.load();
+
             ModifierblogController modif = loader.getController();
             modif.setData(article);
-//           PostController postcontroller = loader.getController();
-            //postcontroller.setArticle(title);
-            // postcontroller.setData(article);
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
+            Stage stage = new Stage();
+            stage.initStyle(StageStyle.DECORATED);
+            stage.setTitle("Add Article");
+            stage.setScene(new Scene(root));
             stage.show();
 
         } catch (IOException ex) {

@@ -48,13 +48,16 @@ public class AddcategorieController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        validationsupport.registerValidator(name, Validator.createEmptyValidator("name categorie is required"));
+
     }
 
     @FXML
     void add(ActionEvent event) {
-        validationsupport.registerValidator(name, Validator.createEmptyValidator("titlefield is required"));
+        validationsupport.registerValidator(name, Validator.createEmptyValidator("name categorie is required"));
 
         if (name.getText().equals("")) {
+
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("control saisie");
             alert.setHeaderText("attention");

@@ -67,15 +67,18 @@ public class TeamDashboardController implements Initializable {
     @FXML
     private ChoiceBox<String> choiceBoxteam;
     @FXML
-    private TableView<Team> teamsTable;
+    private TableView<Team> teamtable;
+//    @FXML
+//    private ListView<String> listv;
+
     @FXML
-    private ListView<String> listv;
+    private TableColumn<Team, String> teamnametable;
+
     @FXML
-    private TableColumn<Team, String> culumnTeam;
+    private TableColumn<Team, String> descriptiontable;
+
     @FXML
-    private TableColumn<Team, String> Description;
-    @FXML
-    private TableColumn<Team, String> culumnIsActiveteam;
+    private TableColumn<Team, String> isactiveteam;
     @FXML
     private Label timeteam;
     @FXML
@@ -98,51 +101,51 @@ public class TeamDashboardController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         time();
         
-//        listM=serviceTeam.afficher();
-//        culumnTeam.setCellValueFactory(new PropertyValueFactory<Team,String>("TeamName"));
-//        Description.setCellValueFactory(new PropertyValueFactory<Team,String>("Description"));
-//        culumnIsActiveteam.setCellValueFactory(new PropertyValueFactory<Team,String>("isactive"));
-//        teamsTable.setItems(listM);
-//            
-//
-//        choiceBoxteam.getItems().add("Teamname");
-//        choiceBoxteam.getItems().add("Description");
-//        choiceBoxteam.getItems().add("isActive");
+        listM=serviceTeam.afficher();
+        teamnametable.setCellValueFactory(new PropertyValueFactory<Team,String>("TeamName"));
+        descriptiontable.setCellValueFactory(new PropertyValueFactory<Team,String>("Description"));
+        isactiveteam.setCellValueFactory(new PropertyValueFactory<Team,String>("isactive"));
+        teamtable.setItems(listM);
+            
+
+        choiceBoxteam.getItems().add("Teamname");
+        choiceBoxteam.getItems().add("Description");
+        choiceBoxteam.getItems().add("isActive");
     }    
 
-//    @FXML
-//    private void search() {
-//        Team team= new Team();
-//        listM.removeAll(listM);
-//        listM=serviceTeam.rechercherTeam(searchteam.getText());
-//        culumnTeam.setCellValueFactory(new PropertyValueFactory<Team,String>("TeamName"));
-//        Description.setCellValueFactory(new PropertyValueFactory<Team,String>("Description"));
-//        culumnIsActiveteam.setCellValueFactory(new PropertyValueFactory<Team,String>("isactive"));
-//        teamsTable.setItems(listM);
-//    }
+    @FXML
+    private void search() {
+        Team team= new Team();
+        listM.removeAll(listM);
+        listM=serviceTeam.rechercherTeam(searchteam.getText());
+        teamnametable.setCellValueFactory(new PropertyValueFactory<Team,String>("TeamName"));
+        descriptiontable.setCellValueFactory(new PropertyValueFactory<Team,String>("Description"));
+        isactiveteam.setCellValueFactory(new PropertyValueFactory<Team,String>("isactive"));
+        teamtable.setItems(listM);
+    }
 
-//    @FXML
-//    private void supp() {
-//        deleteteam.setOnMouseClicked(e->{
-//            Alert alert= new Alert(Alert.AlertType.CONFIRMATION);
-//            alert.setTitle("confirmation Dialog");
-//            alert.setHeaderText(null);
-//            alert.setContentText("Are you sure to delete ?");
-//            Optional <ButtonType> action =alert.showAndWait();
-//            if(action.get()==ButtonType.OK){
-//                    Team team= new Team();
-//                    team=teamsTable.getSelectionModel().getSelectedItem();
-//                    serviceTeam.supprimer(team);
-//                    listM.removeAll(listM);
-//                    listM=serviceTeam.afficher();
-//                    culumnTeam.setCellValueFactory(new PropertyValueFactory<Team,String>("TeamName"));
-//                    Description.setCellValueFactory(new PropertyValueFactory<Team,String>("Description"));
-//                    culumnIsActiveteam.setCellValueFactory(new PropertyValueFactory<Team,String>("isactive"));
-//                    teamsTable.setItems(listM);
-//            }
-//            
-//        });   
-//    }
+    @FXML
+    private void supp() {
+        deleteteam.setOnMouseClicked(e->{
+            Alert alert= new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("confirmation Dialog");
+            alert.setHeaderText(null);
+            alert.setContentText("Are you sure to delete ?");
+            Optional <ButtonType> action =alert.showAndWait();
+            if(action.get()==ButtonType.OK){
+                    Team team= new Team();
+                    team=teamtable.getSelectionModel().getSelectedItem();
+                    serviceTeam.supprimer(team);
+                    listM.removeAll(listM);
+                    listM=serviceTeam.afficher();
+                    teamnametable.setCellValueFactory(new PropertyValueFactory<Team,String>("TeamName"));
+        descriptiontable.setCellValueFactory(new PropertyValueFactory<Team,String>("Description"));
+        isactiveteam.setCellValueFactory(new PropertyValueFactory<Team,String>("isactive"));
+                    teamtable.setItems(listM);
+            }
+            
+        });   
+    }
     
     private void time(){
         Thread thread =new Thread(()->{
@@ -211,14 +214,15 @@ public class TeamDashboardController implements Initializable {
         stage.setScene(new Scene(root1));
         stage.show();
     } 
-        public void affiche(){
-        
-        System.out.println(serviceTeam.afficher());
-        list1=serviceTeam.afficher().stream().
-                map(e->e.toString().substring(e.toString().indexOf("{"),e.toString().indexOf("}"))
-                    ).collect(Collectors.toList());            
-        listv.getItems().addAll(list1);
-    }
+//        public void affiche(){
+//        
+//        System.out.println(serviceTeam.afficher());
+//        list1=serviceTeam.afficher().stream().
+//                map(e->e.toString().substring(e.toString().indexOf("{"),e.toString().indexOf("}"))
+//                    ).collect(Collectors.toList());            
+//        //listv.getItems().addAll(list1);
+//        teamtable.setItems(list1);
+//    }
     
 //    public void removeItem(){
 //        serviceUser.supprimer();

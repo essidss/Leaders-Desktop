@@ -66,11 +66,12 @@ public class ServiceUser implements Service<User> {
             User p = new User();
             
             p.setId(rs.getInt(1));
-            p.setUsername(rs.getString(3));
-            p.setEmail(rs.getString(2));
-            p.setRole(rs.getString(4));
+            p.setEmail(rs.getString("email"));
+
+            p.setUsername(rs.getString("username"));
+            p.setRole(rs.getString("role"));
             p.setPassword(rs.getString(5));
-            p.setIsactive(rs.getString(7));
+            p.setIsactive(rs.getString("isactive"));
             users.add(p);
         }
         return users;
@@ -170,8 +171,7 @@ Statement stm = cnx.createStatement();
                 LoginSession.avatar=rs.getString("avatar");
                 LoginSession.IsLogged=true;
             }
-            System.out.println(LoginSession.Username+" is connected");
-            System.out.println(LoginSession.UID+" is connected");
+            
 
             return true;
         }
@@ -210,22 +210,38 @@ Statement stm = cnx.createStatement();
         return users;
     }
     
-    public TreeSet<User> triWithUsername(){
-        List<User> users =afficher();
-        TreeSet<User> userTri =users.stream().collect(Collectors.toCollection(()-> new TreeSet<User>((a,b)->a.getUsername().compareTo(b.getUsername()))));
-        return userTri;
-    }
-    public TreeSet<User> triWithEmail(){
-        List<User> users =afficher();
-        TreeSet<User> userTri =users.stream().collect(Collectors.toCollection(()-> new TreeSet<User>((a,b)->a.getEmail().compareTo(b.getEmail()))));
-        return userTri;
+    public ObservableList<User> triWithUsername(){
+        ObservableList<User> users =FXCollections.observableArrayList();
+        users.addAll(afficher().stream()
+        .sorted((o1, o2)->o1.getUsername().compareTo(o2.getUsername()))
+        .collect(Collectors.toList()));
+        return users;
     }
     
-    public TreeSet<User> triWithIsactive(){
-        List<User> users =afficher();
-        TreeSet<User> userTri =users.stream().collect(Collectors.toCollection(()-> new TreeSet<User>((a,b)->a.getIsactive().compareTo(b.getIsactive()))));
-        return userTri;
+    public ObservableList<User> triWithEmail(){
+        ObservableList<User> users =FXCollections.observableArrayList();
+        users.addAll(afficher().stream()
+        .sorted((o1, o2)->o1.getEmail().compareTo(o2.getEmail()))
+        .collect(Collectors.toList()));
+        return users;
     }
+    
+    public ObservableList<User> triWithIsActive(){
+        ObservableList<User> users =FXCollections.observableArrayList();
+        users.addAll(afficher().stream()
+        .sorted((o1, o2)->o1.getIsactive().compareTo(o2.getIsactive()))
+        .collect(Collectors.toList()));
+        return users;
+    }
+
+
+
+
+
+
+
+
+
     
 }
 

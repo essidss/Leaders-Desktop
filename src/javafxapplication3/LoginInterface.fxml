@@ -26,8 +26,8 @@
    <right>
       <AnchorPane prefHeight="200.0" prefWidth="350.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField id="txfemail" fx:id="logemail" layoutX="65.0" layoutY="262.0" prefHeight="28.0" prefWidth="208.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: #6C3483#6C3483; -fx-border-width: 0px 0px 2px 0px 0px 0px 2px 0px;" />
-            <Button id="btnsignin" layoutX="122.0" layoutY="397.0" mnemonicParsing="false" onAction="#Login" onMouseClicked="#Login" prefHeight="32.0" prefWidth="95.0" style="-fx-background-color: #5e2c8a#5e2c8a #5e2c8a#5e2c8a; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);" text="Sign In" textFill="WHITE">
+            <TextField id="txfemail" fx:id="logemail" layoutX="78.0" layoutY="205.0" prefHeight="28.0" prefWidth="208.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: #6C3483#6C3483; -fx-border-width: 0px 0px 2px 0px 0px 0px 2px 0px;" />
+            <Button id="btnsignin" layoutX="137.0" layoutY="400.0" mnemonicParsing="false" onAction="#Login" prefHeight="32.0" prefWidth="95.0" style="-fx-background-color: #5e2c8a#5e2c8a #5e2c8a#5e2c8a; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);" text="Sign In" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -43,18 +43,25 @@
                   <Image url="@../Images/guest-icon-8.jpeg" />
                </image>
             </ImageView>
-            <ImageView fitHeight="47.0" fitWidth="37.0" layoutX="14.0" layoutY="262.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="47.0" fitWidth="37.0" layoutX="27.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/icons8-email-64.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="47.0" fitWidth="37.0" layoutX="14.0" layoutY="311.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="47.0" fitWidth="37.0" layoutX="28.0" layoutY="259.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/icons8-key-64.png" />
                </image>
             </ImageView>
-            <PasswordField fx:id="logpassword" layoutX="64.0" layoutY="317.0" prefHeight="26.0" prefWidth="209.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #6C3483#6C3483 #6C3483#6C3483; -fx-border-width: 0px 0px 2px 0px;" />
-            <Hyperlink id="signuplink" fx:id="signuplink" layoutX="199.0" layoutY="452.0" onAction="#switchToSignUp" text="Sign Up" textFill="#6c3483" />
+            <PasswordField fx:id="logpassword" layoutX="78.0" layoutY="265.0" prefHeight="26.0" prefWidth="209.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #6C3483#6C3483 #6C3483#6C3483; -fx-border-width: 0px 0px 2px 0px;" />
+            <Hyperlink id="signuplink" fx:id="signuplink" layoutX="199.0" layoutY="452.0" onAction="#switchToSignUp" text="Sing Up" textFill="#6c3483" />
+            <TextField fx:id="tcaptcha" layoutX="115.0" layoutY="348.0" prefHeight="32.0" prefWidth="137.0" promptText="captcha" />
+            <ImageView fx:id="icaptcha" fitHeight="34.0" fitWidth="136.0" layoutX="116.0" layoutY="306.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="32.0" fitWidth="31.0" layoutX="286.0" layoutY="307.0" onMouseClicked="#refCaptcha" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/icons8-refresh-64%20(1).png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </right>

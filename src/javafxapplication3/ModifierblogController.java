@@ -63,10 +63,9 @@ public class ModifierblogController implements Initializable {
     private TextField titlefield;
     @FXML
     private Label title;
- @FXML
+    @FXML
     private ComboBox<String> tfcategory;
     private ServiceCategory servicecategorie = new ServiceCategory();
-
 
     /**
      * Initializes the controller class.
@@ -74,31 +73,31 @@ public class ModifierblogController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         System.out.println("from ui modif ------------" + a);
-List<String> combolist = new ArrayList<>();
-        combolist = servicecategorie.afficher().stream().map(Category::getNom).collect(Collectors.toList());
-        tfcategory.getItems().addAll(combolist);
+//List<String> combolist = new ArrayList<>();
+//        combolist = servicecategorie.afficher().stream().map(Category::getNom).collect(Collectors.toList());
+//        tfcategory.getItems().addAll(combolist);
 
         // title.setText(""+a.getId());
- String nom = tfcategory.getSelectionModel().getSelectedItem();
-Category c = new Category();
+// String nom = tfcategory.getSelectionModel().getSelectedItem();
+//Category c = new Category();
         Article p = new Article();
-         c.setNom(nom);
-
-        c.setNom(tfcategory.getSelectionModel().getSelectedItem());
+//         c.setNom(nom);
+//
+//        c.setNom(tfcategory.getSelectionModel().getSelectedItem());
 
         ServiceArticle sp = new ServiceArticle();
-          c.setNom(tfcategory.getSelectionModel().getSelectedItem());
- 
-          sp.addtocategory(p, nom);
+//          c.setNom(tfcategory.getSelectionModel().getSelectedItem());
+// 
+//          sp.addtocategory(p, nom);
     }
 
     public void setData(Article a) {
- validationsupport.registerValidator(contentfield, Validator.createEmptyValidator("Contentfield is required"));
-     validationsupport.registerValidator(titlefield, Validator.createEmptyValidator("titlefield is required"));
+        validationsupport.registerValidator(contentfield, Validator.createEmptyValidator("Contentfield is required"));
+        validationsupport.registerValidator(titlefield, Validator.createEmptyValidator("titlefield is required"));
 
         titlefield.setText("" + a.getTitle());
         contentfield.setText(a.getContent());
-        title.setText("" + a.getId());
+       // title.setText("" + a.getId());
 
     }
 
@@ -107,11 +106,11 @@ Category c = new Category();
 
         int id = Integer.parseInt(title.getText());
         String query = "UPDATE article SET title='" + titlefield.getText() + "',content='" + contentfield.getText() + "'  WHERE id=" + id + "";
-Alert a1 = new Alert(Alert.AlertType.NONE,
-                              "Voulez vous ajouter",ButtonType.APPLY);
- 
-                // show the dialog
-                a1.show();
+        Alert a1 = new Alert(Alert.AlertType.NONE,
+                "Voulez vous ajouter", ButtonType.APPLY);
+
+        // show the dialog
+        a1.show();
 
         // show the dialog
         a1.show();
@@ -119,21 +118,20 @@ Alert a1 = new Alert(Alert.AlertType.NONE,
 
     }
 
-@FXML
+    @FXML
     void Accdat(ActionEvent event) {
- String nom = tfcategory.getSelectionModel().getSelectedItem();
-Category c = new Category();
+        String nom = tfcategory.getSelectionModel().getSelectedItem();
+        Category c = new Category();
         Article p = new Article();
-         c.setNom(nom);
+        c.setNom(nom);
 
         c.setNom(tfcategory.getSelectionModel().getSelectedItem());
 
         ServiceArticle sp = new ServiceArticle();
-          c.setNom(tfcategory.getSelectionModel().getSelectedItem());
- 
-          sp.addtocategory(p, nom);
-    }
+        c.setNom(tfcategory.getSelectionModel().getSelectedItem());
 
+        sp.addtocategory(p, nom);
+    }
 
     public void executeQuery(String query) {
         Statement st;
@@ -144,7 +142,8 @@ Category c = new Category();
             e.printStackTrace();
         }
     }
-@FXML
+
+    @FXML
     void Acceuil(MouseEvent event) throws IOException {
 
         Parent window3; //we need to load the layout that we want to swap

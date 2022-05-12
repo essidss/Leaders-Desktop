@@ -29,7 +29,7 @@ public class ServiceTeam implements Service<Team>{
     public boolean ajouter(Team t) {
         
         try {
-        String querry= "INSERT INTO `Team`(`TeamName`, `Description`, `isactive`) VALUES ('"+t.getTeamName()+"','"+t.getDescription()+"','"+t.getIsactive()+"')";
+        String querry= "INSERT INTO `Team`(`team_name`, `description`, `isActive`) VALUES ('"+t.getTeamName()+"','"+t.getDescription()+"','"+t.getIsactive()+"')";
         Statement stm = cnx.createStatement();
     
         int row= stm.executeUpdate(querry);
@@ -60,7 +60,7 @@ public class ServiceTeam implements Service<Team>{
             p.setId(rs.getInt(1));
             p.setTeamName(rs.getString(2));
             p.setDescription(rs.getString(3)); 
-            p.setIsactive(rs.getString(4));
+            p.setIsactive(rs.getString("isActive"));
             teams.add(p);
 //            System.out.println(LoginSession.Role);
         }
@@ -94,7 +94,7 @@ public class ServiceTeam implements Service<Team>{
     public void supprimer(Team t) {
         
         try {
-        String querry= "UPDATE `Team` SET `isactive` = 'deleted' where TeamName='"+t.getTeamName()+"'";
+        String querry= "UPDATE `Team` SET `isactive` = 'deleted' where team_name='"+t.getTeamName()+"'";
         Statement stm = cnx.createStatement();
         stm.executeUpdate(querry);
     

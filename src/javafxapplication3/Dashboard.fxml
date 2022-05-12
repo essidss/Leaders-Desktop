@@ -58,7 +58,7 @@
                <graphic>
                   <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/writing.png" />
+                        <Image url="@../img/icons8_blog_100px.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -67,6 +67,18 @@
                </font>
             </Button>
             <Separator prefHeight="15.0" prefWidth="250.0" />
+            <Button fx:id="Articles1" mnemonicParsing="false" onAction="#switchToCategory" prefHeight="59.0" prefWidth="247.0" style="-fx-background-color: #D3DEDC; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);" text="Articles Categories">
+               <graphic>
+                  <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/category.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Apple Braille" size="17.0" />
+               </font>
+            </Button>
          </children>
       </VBox>
       <Pane layoutX="250.0" layoutY="79.0" prefHeight="94.0" prefWidth="851.0" style="-fx-background-color: #7C99AC;">

@@ -8,6 +8,7 @@ import Connectivity.ConnectionClass;
 import Modal.Article;
 import Services.ServiceTeam;
 import Services.ServiceUser;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -36,9 +37,15 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 /**
  * FXML Controller class
@@ -101,16 +108,22 @@ public class FXMLArticlesController implements Initializable {
     @FXML
     private HBox cardlayout;
     Popup popup = new Popup();
- private Stage stage; 
+    private Stage stage;
     private Scene scene;
     private Parent root;
-    
-    ServiceTeam serviceTeam =new ServiceTeam();
-    ServiceUser serviceUser =new ServiceUser();
-    
+
+    ServiceTeam serviceTeam = new ServiceTeam();
+    ServiceUser serviceUser = new ServiceUser();
+    MediaPlayer mediaplayer;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+//        try {
+//            music();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//
+//        }
         recentlyadded = new ArrayList<>(recentlyadded());
         articles = new ArrayList<>(getArticleList());
 
@@ -126,7 +139,7 @@ public class FXMLArticlesController implements Initializable {
                 CardController cardController = fxmlLoader.getController();
                 cardController.setArticle(value);
                 cardlayout.getChildren().add(cardBox);
-                                  }
+            }
             for (Iterator<Article> i = articles.iterator(); i.hasNext();) {
                 Article item = i.next();
                 FXMLLoader fxmlLoader1 = new FXMLLoader();
@@ -136,7 +149,7 @@ public class FXMLArticlesController implements Initializable {
                 //System.out.println(item);
                 articleController.setData(item);
 
-                if (colum == 5) {
+                if (colum == 4) {
                     colum = 0;
                     row++;
                 }
@@ -147,14 +160,22 @@ public class FXMLArticlesController implements Initializable {
             e.printStackTrace();
         }
 
-
         // TODO  
         //showArticles();
     }
 
+    public void music() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+
+        File file = new File("./src/Connectivity/music.wav");
+        AudioInputStream audiostream = AudioSystem.getAudioInputStream(file);
+        Clip clip = AudioSystem.getClip();
+        clip.open(audiostream);
+        clip.start();
+
+    }
+
     @FXML
-    private void showcategorie(MouseEvent event) throws IOException 
-   {
+    private void showcategorie(MouseEvent event) throws IOException {
 
 
         /*FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CategorieList.fxml"));
@@ -171,24 +192,19 @@ public class FXMLArticlesController implements Initializable {
 
         mainWindow.setScene(newScene); //here we simply set the new scene
 
-   }
+    }
 
     @FXML
-    private void addblog(ActionEvent event) throws IOException {
-        /* System.out.println("javafxapplication3.FXMLArticlesController.addblog()");
-     Parent home_page_parent = FXMLLoader.load(getClass().getResource("Addblog.fxml"));
-     Scene home_page_scene = new Scene(home_page_parent);
-     Stage app_stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-     app_stage.hide(); //optional
-     app_stage.setScene(home_page_scene);
-     app_stage.show();*/
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("Addblog.fxml"));
-        Parent root1 = (Parent) fxmlLoader.load();
+    public void addblog(ActionEvent event) throws IOException {
+
+        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("Addblog.fxml"));
+        Parent root1 = (Parent) fxmlloader.load();
         Stage stage = new Stage();
+        stage.initStyle(StageStyle.DECORATED);
+        stage.setTitle("Add Article");
         stage.setScene(new Scene(root1));
         stage.show();
-
     }
 
     private List<Article> recentlyadded() {
@@ -228,7 +244,7 @@ public class FXMLArticlesController implements Initializable {
             rs = st.executeQuery(query);
             Article articles;
             while (rs.next()) {
-                articles = new Article(rs.getInt("id"), rs.getString("title"), rs.getString("content"), rs.getDate("date"), rs.getInt("liked"), rs.getInt("idcat"),rs.getString("image"),rs.getInt("totalReactions"),rs.getInt("nbComments"),rs.getInt("nbShares"),rs.getInt("user_id"));
+                articles = new Article(rs.getInt("id"), rs.getString("title"), rs.getString("content"), rs.getDate("date"), rs.getInt("liked"), rs.getInt("idcat"), rs.getString("image"), rs.getInt("totalReactions"), rs.getInt("nbComments"), rs.getInt("nbShares"), rs.getInt("user_id"));
                 articleList.add(articles);
             }
         } catch (Exception e) {
@@ -236,44 +252,47 @@ public class FXMLArticlesController implements Initializable {
         }
         return articleList;
     }
-public void switchToDash(ActionEvent event) throws IOException{
+
+    public void switchToDash(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setTitle("Dash");
         stage.setScene(scene);
-        stage.show();  
-        
-    }  
-      public void Home(MouseEvent event) throws IOException{
+        stage.show();
+
+    }
+
+    public void Home(MouseEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("Front.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setTitle("Dash");
         stage.setScene(scene);
-        stage.show();  
-        
-    }  
-    public void switchProfilePopup() throws IOException{
-        
-        FXMLLoader fxmlloader = new FXMLLoader (getClass().getResource("Profile.fxml"));
-        Parent root1= (Parent) fxmlloader.load();
+        stage.show();
+
+    }
+
+    public void switchProfilePopup() throws IOException {
+
+        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("Profile.fxml"));
+        Parent root1 = (Parent) fxmlloader.load();
         Stage stage = new Stage();
         stage.initStyle(StageStyle.DECORATED);
         stage.setTitle("Profile");
         stage.setScene(new Scene(root1));
         stage.show();
-    }  
+    }
+
     @FXML
-    public void logout(ActionEvent event) throws IOException{
+    public void logout(ActionEvent event) throws IOException {
         serviceUser.logout();
         root = FXMLLoader.load(getClass().getResource("LoginInterface.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setTitle("Dash");
         stage.setScene(scene);
-        stage.show();    
+        stage.show();
     }
-    
 
 }

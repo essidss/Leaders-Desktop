@@ -5,8 +5,9 @@
 package javafxapplication3;
 
 import Connectivity.ConnectionClass;
-import Modal.Article;
 import Modal.Category;
+import Services.ServiceTeam;
+import Services.ServiceUser;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -30,8 +31,8 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 /**
  * FXML Controller class
@@ -52,6 +53,12 @@ public class CategorieListController implements Initializable {
     private GridPane bookContainer;
     @FXML
     private Label categorie;
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+
+    ServiceTeam serviceTeam = new ServiceTeam();
+    ServiceUser serviceUser = new ServiceUser();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -126,16 +133,57 @@ public class CategorieListController implements Initializable {
 
     @FXML
     void Addcategorie(ActionEvent event) throws IOException {
-        Parent window3; //we need to load the layout that we want to swap
-        window3 = FXMLLoader.load(getClass().getResource("Addcategorie.fxml"));
 
-        Scene newScene; //then we create a new scene with our new layout
-        newScene = new Scene(window3);
+        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("Addcategorie.fxml"));
+        Parent root1 = (Parent) fxmlloader.load();
+        Stage stage = new Stage();
+        stage.initStyle(StageStyle.DECORATED);
+        stage.setTitle("Add categorie");
+        stage.setScene(new Scene(root1));
+        stage.show();
+    }
 
-        Stage mainWindow; //Here is the magic. We get the reference to main Stage.
-        mainWindow = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    
+    public void switchToDash(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setTitle("Dash");
+        stage.setScene(scene);
+        stage.show();
 
-        mainWindow.setScene(newScene); //here we simply set the new scene
+    }
+
+    public void Home(MouseEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("Front.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setTitle("Dash");
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    public void switchProfilePopup() throws IOException {
+
+        FXMLLoader fxmlloader = new FXMLLoader(getClass().getResource("Profile.fxml"));
+        Parent root1 = (Parent) fxmlloader.load();
+        Stage stage = new Stage();
+        stage.initStyle(StageStyle.DECORATED);
+        stage.setTitle("Profile");
+        stage.setScene(new Scene(root1));
+        stage.show();
+    }
+
+    @FXML
+    public void logout(ActionEvent event) throws IOException {
+        serviceUser.logout();
+        root = FXMLLoader.load(getClass().getResource("LoginInterface.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setTitle("Dash");
+        stage.setScene(scene);
+        stage.show();
     }
 
 }

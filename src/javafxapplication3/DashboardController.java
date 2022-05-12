@@ -93,6 +93,8 @@ public class DashboardController implements Initializable {
     private Stage stage; 
     private Scene scene;
     private Parent root;
+@FXML
+    private TableColumn<?, ?> culumnTeam;
     /**
      * Initializes the controller class.
      */
@@ -109,6 +111,31 @@ public class DashboardController implements Initializable {
         choiceBox.getItems().add("Username");
         choiceBox.getItems().add("Email");
         choiceBox.getItems().add("Isactive");
+
+        choiceBox.valueProperty().addListener((obs, oldItem, newItem) -> {
+            if (newItem == "Username") {
+                listM=serviceUser.triWithUsername();
+                culumnEmail.setCellValueFactory(new PropertyValueFactory<User,String>("email"));
+                culumnUsername.setCellValueFactory(new PropertyValueFactory<User,String>("username"));
+                culumnRole.setCellValueFactory(new PropertyValueFactory<User,String>("role"));
+                culumnIsActive.setCellValueFactory(new PropertyValueFactory<User,String>("isactive"));
+                usersTable.setItems(listM);
+            } else if(newItem == "Email"){
+                listM=serviceUser.triWithEmail();
+                culumnEmail.setCellValueFactory(new PropertyValueFactory<User,String>("email"));
+                culumnUsername.setCellValueFactory(new PropertyValueFactory<User,String>("username"));
+                culumnRole.setCellValueFactory(new PropertyValueFactory<User,String>("role"));
+                culumnIsActive.setCellValueFactory(new PropertyValueFactory<User,String>("isactive"));
+                usersTable.setItems(listM);
+            }else if(newItem == ""){
+                listM=serviceUser.triWithEmail();
+                culumnEmail.setCellValueFactory(new PropertyValueFactory<User,String>("email"));
+                culumnUsername.setCellValueFactory(new PropertyValueFactory<User,String>("username"));
+                culumnRole.setCellValueFactory(new PropertyValueFactory<User,String>("role"));
+                culumnIsActive.setCellValueFactory(new PropertyValueFactory<User,String>("isactive"));
+                usersTable.setItems(listM);
+            }
+        });
     }    
  
     @FXML
@@ -189,7 +216,7 @@ public class DashboardController implements Initializable {
         culumnIsActive.setCellValueFactory(new PropertyValueFactory<User,String>("isactive"));
         usersTable.setItems(listM);
     }
-    
+    @FXML
     public void switchToTeam(ActionEvent event) throws IOException{
         
         /*root = FXMLLoader.load(getClass().getResource("TeamDashboard.fxml"));
@@ -206,16 +233,16 @@ public class DashboardController implements Initializable {
         stage.show();
                 
     }  
-    
+   @FXML 
     public void tree(){
-        if(choiceBox.getSelectionModel().getSelectedItem().equals("Username")){
-            listM=(ObservableList<User>) serviceUser.triWithUsername();
-            culumnEmail.setCellValueFactory(new PropertyValueFactory<User,String>("email"));
-        culumnUsername.setCellValueFactory(new PropertyValueFactory<User,String>("username"));
-        culumnRole.setCellValueFactory(new PropertyValueFactory<User,String>("role"));
-        culumnIsActive.setCellValueFactory(new PropertyValueFactory<User,String>("isactive"));
-        usersTable.setItems(listM);
-        } 
+//        if(choiceBox.getSelectionModel().getSelectedItem().equals("username")){
+//            listM=(ObservableList<User>) serviceUser.triWithUsername();
+//            culumnEmail.setCellValueFactory(new PropertyValueFactory<User,String>("email"));
+//        culumnUsername.setCellValueFactory(new PropertyValueFactory<User,String>("username"));
+//        culumnRole.setCellValueFactory(new PropertyValueFactory<User,String>("role"));
+//        culumnIsActive.setCellValueFactory(new PropertyValueFactory<User,String>("isactive"));
+//        usersTable.setItems(listM);
+//        } 
     }
     @FXML
     public void switchToFront(ActionEvent event) throws IOException{
@@ -233,6 +260,17 @@ public class DashboardController implements Initializable {
     public void switchToArticle(ActionEvent event) throws IOException{
         
         root = FXMLLoader.load(getClass().getResource("ArticlesDashboard.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setTitle("Team");
+        stage.setScene(scene);
+        stage.show();
+                
+    } 
+@FXML
+    public void switchToCategory(ActionEvent event) throws IOException{
+        
+        root = FXMLLoader.load(getClass().getResource("categoriedashboard.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setTitle("Team");

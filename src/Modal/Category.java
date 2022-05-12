@@ -11,6 +11,13 @@ package Modal;
 public class Category {
     int idcat;
 String nom;
+int user_id;
+boolean archived;
+    public Category(int idcat, String nom, int user_id) {
+        this.idcat = idcat;
+        this.nom = nom;
+        this.user_id = user_id;
+    }
 
     public Category(int idcat, String nom) {
         this.idcat = idcat;
@@ -39,6 +46,23 @@ String nom;
     public void setNom(String nom) {
         this.nom = nom;
     }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+
+    public boolean isArchived() {
+        return archived;
+    }
+
+    public void setArchived(boolean archived) {
+        this.archived = archived;
+    }
+
     
 
 @Override

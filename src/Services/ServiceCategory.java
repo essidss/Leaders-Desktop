@@ -13,6 +13,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import Connectivity.ConnectionClass;
+import Modal.Article;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -40,8 +43,8 @@ private Connection cnx = ConnectionClass.getInstance().getCnx() ;
     }
 
  @Override
-    public List<Category> afficher() {
-     List<Category> categorys = new ArrayList();
+    public ObservableList afficher() {
+        ObservableList<Category> obList = FXCollections.observableArrayList();
         try {
        
         String querry ="SELECT * FROM `category`";
@@ -52,38 +55,40 @@ private Connection cnx = ConnectionClass.getInstance().getCnx() ;
             
             p.setIdcat(rs.getInt(1));
             p.setNom(rs.getString("nom"));
-             categorys.add(p);
+            p.setUser_id(rs.getInt("user_id"));
+            p.setArchived(rs.getBoolean("archived"));
+             obList.add(p);
         }
         
         
         
-        return categorys;
+        return obList;
     } catch (SQLException ex) {
         }
-    return categorys;
+    return obList;
     }
+
+  
 
  @Override
     public void supprimer(Category t) {
     
-try {
-  String req="DELETE FROM `category` WHERE idcat = ?" ;
-           
-            PreparedStatement stm = cnx.prepareStatement(req);
-            stm.setString(1,t.getNom());
-
-    
-    stm.executeUpdate();
-                System.out.println(" deleted !!!");
-
-    } catch (SQLException ex) {
-        System.out.println(ex.getMessage());
-    
-    }
-
+  String req="UPDATE `category` SET `archived`='"+1+"' WHERE idcat=?";
+         try {
+             PreparedStatement ste = cnx.prepareStatement(req);
+              ste.setInt(1,t.getIdcat());
+             ste.executeUpdate();
+             System.out.println("category bien Archivé");
+            
+         }catch (SQLException ex) {
+            System.out.println("Probléme d'archivage ");
+            System.out.println(ex.getMessage());
+        
+         }
         
  
          }
+
     
     
 }

@@ -45,10 +45,8 @@ public class AddblogController implements Initializable {
     @FXML
     private Text label_photo;
     @FXML
-    private Label nameLabel1;
-    @FXML
     private Button browse;
-    private String patharticle;
+    private String absolutePathPhotoAnnonce;
 
     ValidationSupport validationsupport = new ValidationSupport();
 
@@ -78,7 +76,7 @@ public class AddblogController implements Initializable {
             p.setTitle(titlefield.getText());
             p.setContent(contentfield.getText());
             p.setUser_id(LoginSession.UID);
-            copyImage.deplacerVers(label_photo, patharticle, "C:\\Users\\hp\\Documents\\NetBeansProjects\\JavaFXApplication3\\src\\img");
+            copyImage.deplacerVers(label_photo, absolutePathPhotoAnnonce, "C:\\Users\\hp\\Documents\\NetBeansProjects\\JavaFXApplication3\\src\\img");
 
             Alert a1 = new Alert(AlertType.NONE,
                     "Voulez vous ajouter", ButtonType.APPLY);
@@ -93,7 +91,7 @@ public class AddblogController implements Initializable {
         }
     }
 
-    @FXML
+      @FXML
     void addimage(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().addAll(
@@ -103,8 +101,8 @@ public class AddblogController implements Initializable {
             File choix = fileChooser.showOpenDialog(null);
             if (choix != null) {
                 System.out.println(choix.getAbsolutePath());
-                patharticle = choix.getAbsolutePath();
-                System.out.println("TEST" + patharticle);
+                absolutePathPhotoAnnonce = choix.getAbsolutePath();
+                System.out.println("TEST" + absolutePathPhotoAnnonce);
                 label_photo.setText(choix.getName());
 
             } else {

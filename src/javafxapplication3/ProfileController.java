@@ -8,6 +8,8 @@ package javafxapplication3;
 import Modal.User;
 import Services.LoginSession;
 import Services.ServiceUser;
+import java.io.File;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -47,11 +49,18 @@ public String urll;
 ServiceUser serviceUser =new ServiceUser();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-//         urll="../Images/".concat(LoginSession.avatar);
-//         Image image = new Image(urll);  
-//        imgprof.setImage(image);
-//         HBox box = new HBox();
-//         box.getChildren().add(imgprof);
+    File file = new File("C:\\Users\\hp\\Documents\\NetBeansProjects\\JavaFXApplication3\\src\\images\\"+LoginSession.avatar);
+           try {
+               String localUrl = file.toURI().toURL().toString();
+               imgprof.setFitHeight(150);
+               imgprof.setFitWidth(150);
+               Image image = new Image(localUrl);
+               imgprof.setImage(image);
+               System.err.println(",hjbkjh kjgk"+LoginSession.avatar);
+               
+           } catch (MalformedURLException ex) {
+               System.out.println(ex);;
+           }
             labemail.setText(LoginSession.Email);
             labusername.setText(LoginSession.Username);
             labpassword.setText(LoginSession.Password);
