@@ -2,13 +2,13 @@ package GUI;
 
 
 import Model.Annonce;
-import Model.Categorie;
+import Model.Annonce_Categorie;
+import GUI.AnnonceCardController;
 
-import Services.ServiceAnnonce;
-import Services.ServiceCategorie;
-import Services.IServiceCategorie;
-import Services.IService;
+import Services.*;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -16,6 +16,7 @@ import java.sql.Statement;
 import java.util.*;
 
 import Services.ServiceAnnonce;
+import javafx.collections.transformation.FilteredList;
 import javafx.fxml.Initializable;
 import java.io.IOException;
 import java.net.URL;
@@ -39,6 +40,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
@@ -49,6 +51,7 @@ import utils.DataBase;
 
 import javax.swing.plaf.nimbus.State;
 import javax.xml.crypto.Data;
+import javax.xml.soap.Text;
 
 /**
  * FXML Controller class
@@ -63,6 +66,9 @@ public class AnnonceController implements Initializable {
     private GridPane grid;
 
     private List<Annonce> annonces;
+    private MyListener myListener;
+    private int id;
+    Annonce annonce;
 
 
     private Connection cnx = DataBase.getInstance().getConnection();
@@ -83,26 +89,48 @@ public class AnnonceController implements Initializable {
                 ls.add(annonce);
             }
         }catch (Exception e){
-            e.printStackTrace();
         }
 
         return ls;
     }
-
+    
+    public void setChosenAnnonce(Annonce a){
+        
+       
+                FXMLLoader loader = new FXMLLoader();
+                            loader.setLocation(getClass().getResource("AnnonceDetails.fxml"));
+                            try {
+                                loader.load();
+                            } catch (IOException ex) {
+                                Logger.getLogger(AnnonceCardController.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                            AnnonceDetailsController details = loader.getController();
+                            details.setTextField(a.getId(),a.getTitle(), a.getDescription(),a.getLocalisation(),a.getPrix(),a.getImage());
+       
+                            Parent parent = loader.getRoot();
+                            Stage stage = new Stage();
+                            stage.setScene(new Scene(parent));
+                            stage.show();
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources){
         annonces = new ArrayList<>(annonces());
-
+        
+        myListener = new MyListener(){
+                @Override
+                public void onClickListener(Annonce annonce) {
+                    setChosenAnnonce(annonce);
+                }};
         int columns = 0;
         int row = 1;
         try{
-            for (int i=0 ; i< annonces.size(); i++){
+            for (int i=annonces.size()-1; i>=0; i--){
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("AnnonceCard.fxml"));
                 VBox box = fxmlLoader.load();
                 AnnonceCardController cardController = fxmlLoader.getController();
-                cardController.setData(annonces.get(i));
+                cardController.setData(annonces.get(i),myListener);
 
                 if (columns == 4){
                     columns = 0;
@@ -120,9 +148,9 @@ public class AnnonceController implements Initializable {
                 grid.setMaxHeight(Region.USE_PREF_SIZE);
 
                 GridPane.setMargin(box,new Insets(10));
+
             }
         }catch (IOException e){
-            e.printStackTrace();
         }
     }
 
@@ -135,6 +163,16 @@ public class AnnonceController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-
+    
+    public void switchToFront(MouseEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("Front.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setTitle("Annonce");
+        stage.setScene(scene);
+        stage.show();
+    }
+    
+    
 
 }
