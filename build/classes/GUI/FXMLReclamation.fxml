@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="559.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLReclamationController">
+   <children>
+      <Label layoutX="103.0" layoutY="21.0" prefHeight="58.0" prefWidth="507.0" text="              GESTIONS DES RECLAMATIONS" textFill="#a11fa1">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <Label layoutX="23.0" layoutY="314.0" prefHeight="17.0" prefWidth="106.0" text="sujet">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="5.0" layoutY="164.0" prefHeight="30.0" prefWidth="124.0" text="description">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="26.0" layoutY="265.0" prefHeight="17.0" prefWidth="100.0" text="date">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="Ajouter" layoutX="76.0" layoutY="380.0" mnemonicParsing="false" onAction="#ajouter" prefHeight="25.0" prefWidth="100.0" text="Ajouter" textFill="#a42297" />
+      <Button layoutX="207.0" layoutY="380.0" mnemonicParsing="false" onAction="#modifier" prefHeight="25.0" prefWidth="100.0" text="Modifier" textFill="#942082" />
+      <TextField fx:id="tfsujet" layoutX="129.0" layoutY="316.0" prefHeight="25.0" prefWidth="224.0" />
+      <TextArea fx:id="tfdescription" layoutX="129.0" layoutY="164.0" prefHeight="85.0" prefWidth="224.0" />
+      <TableView fx:id="tableReclamation" layoutX="395.0" layoutY="106.0" prefHeight="200.0" prefWidth="377.0">
+        <columns>
+          <TableColumn fx:id="descriptioncol" prefWidth="75.0" text="description" />
+          <TableColumn fx:id="datecol" prefWidth="75.0" text="date" />
+            <TableColumn fx:id="sujetcol" prefWidth="75.0" text="sujet" />
+        </columns>
+      </TableView>
+      <TextField fx:id="tfid" layoutX="92.0" layoutY="94.0" visible="false" />
+      <Button layoutX="582.0" layoutY="332.0" mnemonicParsing="false" onAction="#afficherReclamation" text="charger" textFill="#971b93" />
+      <Button layoutX="581.0" layoutY="368.0" mnemonicParsing="false" onAction="#archReclamation" text="archiver" textFill="#902984" />
+      <TextField fx:id="tfrech" layoutX="395.0" layoutY="79.0" />
+      <ComboBox fx:id="trinom" layoutX="584.0" layoutY="79.0" prefWidth="150.0" />
+      <Button layoutX="585.0" layoutY="405.0" mnemonicParsing="false" onAction="#imprimer" text="pdf" />
+      <TextField fx:id="tfdate" layoutX="126.0" layoutY="283.0" prefHeight="25.0" prefWidth="224.0" />
+   </children>
+</AnchorPane>

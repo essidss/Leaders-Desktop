@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" prefHeight="780.0" prefWidth="1427.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.MainController">
+   <children>
+     
+      <VBox alignment="TOP_CENTER" layoutX="-13.0" layoutY="-80.0" prefHeight="872.0" prefWidth="284.0" style="-fx-background-color: #17A589;">
+         <padding>
+            <Insets top="100.0" />
+         </padding>
+         <children>
+            <Circle fx:id="myCircle1" fill="DODGERBLUE" radius="35.0" stroke="BLACK" strokeType="INSIDE" />
+            <Button alignment="BASELINE_LEFT" cancelButton="true" graphicTextGap="0.0" mnemonicParsing="false" onAction="#switchToProfil" prefHeight="32.0" prefWidth="256.0" style="-fx-background-color: #17A589;" stylesheets="@styleg.css">
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+            <Button alignment="BASELINE_LEFT" cancelButton="true" graphicTextGap="0.0" mnemonicParsing="false" onAction="#switchToProfil" prefHeight="32.0" prefWidth="256.0" style="-fx-background-color: #17A589;" stylesheets="@styleg.css">
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+            <Button fx:id="RECLAMATION" alignment="BASELINE_LEFT" graphicTextGap="0.0" mnemonicParsing="false" onAction="#switchToReclamation" prefHeight="42.0" prefWidth="296.0" style="-fx-background-color: #76D7C4;" stylesheets="@styleg.css" text="Reclamation">
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <graphic>
+                  <ImageView fitHeight="27.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/dashboard-png-icon-18.jpg" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Comic Sans MS" size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="Event" alignment="BASELINE_LEFT" cancelButton="true" graphicTextGap="0.0" mnemonicParsing="false" onAction="#switchToEvent" prefHeight="42.0" prefWidth="296.0" style="-fx-background-color: #76D7C4;" stylesheets="@styleg.css" text="Event">
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <graphic>
+                  <ImageView fitHeight="27.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/u.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Comic Sans MS" size="15.0" />
+               </font>
+            </Button>
+            <Button alignment="BASELINE_LEFT" cancelButton="true" graphicTextGap="0.0" mnemonicParsing="false" onAction="#switchToProfil" prefHeight="32.0" prefWidth="256.0" style="-fx-background-color: #17A589;" stylesheets="@styleg.css">
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+            <Button alignment="BASELINE_LEFT" cancelButton="true" graphicTextGap="0.0" mnemonicParsing="false" onAction="#switchToProfil" prefHeight="32.0" prefWidth="256.0" style="-fx-background-color: #17A589;" stylesheets="@styleg.css">
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

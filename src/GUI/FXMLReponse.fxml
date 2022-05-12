@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="736.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLReponseController">
+   <children>
+      <Label layoutX="35.0" layoutY="231.0" text="reclamation" />
+      <Label layoutX="35.0" layoutY="165.0" prefHeight="17.0" prefWidth="63.0" text="reponse" />
+      <Label layoutX="35.0" layoutY="200.0" prefHeight="17.0" prefWidth="76.0" text="date" />
+      <Button fx:id="Ajouter" layoutX="48.0" layoutY="296.0" mnemonicParsing="false" onAction="#Ajouter" prefHeight="25.0" prefWidth="63.0" text="ajouter" textFill="#ca21cd">
+         <font>
+            <Font name="Book Antiqua Bold" size="13.0" />
+         </font></Button>
+      <TextField fx:id="tfreponse" layoutX="117.0" layoutY="161.0" />
+      <TextField fx:id="tfreclamation" layoutX="117.0" layoutY="227.0" />
+      <Label layoutX="98.0" layoutY="42.0" text="GESTION DES REPONSES" textFill="#b929af">
+         <font>
+            <Font name="Book Antiqua Bold" size="29.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfid" layoutX="117.0" layoutY="126.0" visible="false" />
+      <TableView fx:id="tableReponse" layoutX="328.0" layoutY="121.0" prefHeight="200.0" prefWidth="364.0">
+        <columns>
+          <TableColumn fx:id="reponsecol" prefWidth="75.0" text="reponse" />
+          <TableColumn fx:id="datecol" prefWidth="75.0" text="date" />
+            <TableColumn fx:id="reclamationcol" prefWidth="75.0" text="reclamation" />
+        </columns>
+      </TableView>
+      <Button layoutX="441.0" layoutY="338.0" mnemonicParsing="false" onAction="#afficherReponse" prefHeight="25.0" prefWidth="70.0" text="charger" textFill="#a8288a">
+         <font>
+            <Font name="Book Antiqua Bold" size="13.0" />
+         </font></Button>
+      <Button layoutX="131.0" layoutY="296.0" mnemonicParsing="false" onAction="#modifier" text="modifier" textFill="#ab1d9f">
+         <font>
+            <Font name="Book Antiqua Bold" size="13.0" />
+         </font></Button>
+      <Button layoutX="354.0" layoutY="338.0" mnemonicParsing="false" onAction="#archReponse" text="Archiver" textFill="#b91aab">
+         <font>
+            <Font name="Book Antiqua Bold" size="13.0" />
+         </font></Button>
+      <TextField fx:id="tfrech" layoutX="328.0" layoutY="97.0" />
+      <ComboBox fx:id="trinom" layoutX="511.0" layoutY="84.0" prefWidth="150.0" />
+      <TextField fx:id="tfdate" layoutX="117.0" layoutY="196.0" />
+   </children>
+</AnchorPane>
