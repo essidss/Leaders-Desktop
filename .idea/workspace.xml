@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6fdcf1e9-db83-47b9-9f8c-d5ad481bcbc1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/FXMLPersonne.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/FXMLPersonneController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/NewFXMain$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/GUI/NewFXMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/GUI/NewFXMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Model/Personne.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Services/IService.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/Services/IService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/Services/ServicePersonne.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/utils/MyDb.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/workshope3a35/WorkShope3A35.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/build-impl.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/build-impl.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/genfiles.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/genfiles.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/project.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTION_ANNONCE/GUI/AddAnnonce.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTION_ANNONCE/GUI/AddAnnonce.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTION_ANNONCE/GUI/AddAnnonceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTION_ANNONCE/GUI/AddAnnonceController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTION_ANNONCE/GUI/AnnonceCard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTION_ANNONCE/GUI/AnnonceCard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTION_ANNONCE/GUI/AnnonceCardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTION_ANNONCE/GUI/AnnonceCardController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTION_ANNONCE/GUI/AnnonceController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTION_ANNONCE/GUI/AnnonceController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/GESTION_ANNONCE/GUI/AnnonceController.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/GESTION_ANNONCE/GUI/AnnonceController.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/AddAnnonce.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/AddAnnonce.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/AddAnnonceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/AddAnnonceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/AnnonceCard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/AnnonceCard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/AnnonceCardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/AnnonceCardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/AnnonceController.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/AnnonceController.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/AnnonceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/AnnonceController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Services/ServiceAnnonce.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Services/ServiceAnnonce.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/GUI/AddAnnonce.fxml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Services/ServiceAnnonce.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/GUI/AnnonceController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/GUI/AnnonceCardController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/GUI/CategorieController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/GUI/AnnonceCard.fxml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/GUI/AddAnnonceController.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/GUI/Categorie.fxml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/GUI/AnnonceController.fxml" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="282d63RIEyaYaN353JjJXpbljmL" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Leaders-Desktop-mahdi" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+  </component>
+  <component name="RunManager">
+    <configuration name="NewFXMain" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="GUI.NewFXMain" />
+      <module name="GESTION_ANNONCE" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6fdcf1e9-db83-47b9-9f8c-d5ad481bcbc1" name="Changes" comment="" />
+      <created>1650418435888</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1650418435888</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="initial commmit" />
+    <option name="LAST_COMMIT_MESSAGE" value="initial commmit" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.sql.SQLException" package="java.sql" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/GESTION_ANNONCE$NewFXMain.ic" NAME="NewFXMain Coverage Results" MODIFIED="1650846974936" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/WorkShope3A35$NewFXMain.ic" NAME="NewFXMain Coverage Results" MODIFIED="1650422192970" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>
