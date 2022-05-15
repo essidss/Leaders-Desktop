@@ -4,7 +4,7 @@
  */
 package Services;
 
-import Modal.Article;
+import Modal.Posts;
 import java.util.List;
 
 /**
@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface IServcieComment <T> {
       public void  ajouter(T t);
-    public List<T> afficher(Article a);
+    public List<T> afficher(Posts a);
     public void  modifier (T t);
     public void supprimer (T t);
 }

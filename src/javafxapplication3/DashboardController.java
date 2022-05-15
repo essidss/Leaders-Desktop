@@ -279,5 +279,36 @@ public class DashboardController implements Initializable {
                 
     } 
 
-    
+    public void switchToEvent(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("eventaffichage.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setTitle("CategorieAnnonceBack");
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void switchToEventCategorie(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("categoriegrid.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setTitle("CategorieAnnonceBack");
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void switchToListReponse(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("reponsegrid.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setTitle("CategorieAnnonceBack");
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void switchToClaims(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("reclamationgridBack.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setTitle("CategorieAnnonceBack");
+        stage.setScene(scene);
+        stage.show();
+    }
 }

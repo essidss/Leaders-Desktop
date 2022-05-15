@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.util.List;
 import java.util.prefs.Preferences;
 import Connectivity.ConnectionClass;
-import Modal.Article;
+import Modal.Posts;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -34,7 +34,7 @@ public class ServiceUser implements Service<User> {
     public boolean ajouter(User t) {
         
         try {
-        String querry= "INSERT INTO `User`(`email`, `username`, `role`, `password`,`avatar`,`isactive`) VALUES ('"+t.getEmail()+"','"+t.getUsername()+"','"+t.getRole()+"','"+t.getPassword()+"','"+t.getAvatar()+"','"+t.getIsactive()+"')";
+        String querry= "INSERT INTO `User`(`email`, `username`, `roles`, `password`,`picture_profil`,`isactive`) VALUES ('"+t.getEmail()+"','"+t.getUsername()+"','"+t.getRole()+"','"+t.getPassword()+"','"+t.getAvatar()+"','"+t.getIsactive()+"')";
         Statement stm = cnx.createStatement();
     
         int x = stm.executeUpdate(querry);
@@ -69,7 +69,7 @@ public class ServiceUser implements Service<User> {
             p.setEmail(rs.getString("email"));
 
             p.setUsername(rs.getString("username"));
-            p.setRole(rs.getString("role"));
+            p.setRole(rs.getString("roles"));
             p.setPassword(rs.getString(5));
             p.setIsactive(rs.getString("isactive"));
             users.add(p);
@@ -91,7 +91,7 @@ Statement stm = cnx.createStatement();
                 User p = new User();
                 ResultSet rs= stm.executeQuery(query2);
                 while(rs.next()){
-                  // p= new Article(rs.getInt("id"),rs.getString("title"),rs.getString(3),rs.getDate("date"),rs.getInt("idcat"));
+                  // p= new Posts(rs.getInt("id"),rs.getString("title"),rs.getString(3),rs.getDate("date"),rs.getInt("idcat"));
               p.setId(rs.getInt(1));
             p.setUsername(rs.getString(3));
             p.setEmail(rs.getString(2));
@@ -114,7 +114,7 @@ Statement stm = cnx.createStatement();
     public void modifier(String t2,User t) {
        
         try {
-        String querry= "UPDATE `User` SET `email`='"+t.getEmail()+"',`username`='"+t.getUsername()+"',`role`='"+t.getRole()+"',`password`='"+t.getPassword()+"' WHERE email='"+t2+"'";
+        String querry= "UPDATE `User` SET `email`='"+t.getEmail()+"',`username`='"+t.getUsername()+"',`roles`='"+t.getRole()+"',`password`='"+t.getPassword()+"' WHERE email='"+t2+"'";
         Statement stm = cnx.createStatement();
     
         stm.executeUpdate(querry);
@@ -164,11 +164,11 @@ Statement stm = cnx.createStatement();
             System.out.println("user is logged");
             while(rs.next()){
                 LoginSession.UID=rs.getInt("id");
-                LoginSession.Role=rs.getString("role");
+                LoginSession.Role=rs.getString("roles");
                 LoginSession.Username=rs.getString("username");
                 LoginSession.Email=rs.getString("email");
                 LoginSession.Password=rs.getString("password"); 
-                LoginSession.avatar=rs.getString("avatar");
+                LoginSession.picture_profil=rs.getString("picture_profil");
                 LoginSession.IsLogged=true;
             }
             
@@ -190,7 +190,7 @@ Statement stm = cnx.createStatement();
         //List<User> users = new ArrayList();
         ObservableList<User> users =FXCollections.observableArrayList();
         try {
-        String querry ="SELECT id,username,email,password,role FROM `User` where email like '%"+n+"%' or username like '%"+n+"%' or role like '%"+n+"%'";
+        String querry ="SELECT id,username,email,password,roles FROM `User` where email like '%"+n+"%' or username like '%"+n+"%' or roles like '%"+n+"%'";
         Statement stm = cnx.createStatement();
         ResultSet rs= stm.executeQuery(querry);
         System.out.println(querry);

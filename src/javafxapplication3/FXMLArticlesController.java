@@ -5,7 +5,8 @@
 package javafxapplication3;
 
 import Connectivity.ConnectionClass;
-import Modal.Article;
+import Modal.Posts;
+import Services.ServicePosts;
 import Services.ServiceTeam;
 import Services.ServiceUser;
 import java.io.File;
@@ -59,8 +60,8 @@ public class FXMLArticlesController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    private List<Article> recentlyadded;
-    private List<Article> articles;
+    private List<Posts> recentlyadded;
+    private List<Posts> articles;
     @FXML
     private TextField idField;
 
@@ -118,20 +119,21 @@ public class FXMLArticlesController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-//        try {
-//            music();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//
-//        }
+        try {
+            music();
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
+        ServicePosts sp = new ServicePosts();
         recentlyadded = new ArrayList<>(recentlyadded());
-        articles = new ArrayList<>(getArticleList());
+        articles = new ArrayList<>(sp.getArticle());
 
         int colum = 0;
         int row = 1;
         try {
 
-            for (Article value : recentlyadded) {
+            for (Posts value : recentlyadded) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("card.fxml"));
 
@@ -140,8 +142,8 @@ public class FXMLArticlesController implements Initializable {
                 cardController.setArticle(value);
                 cardlayout.getChildren().add(cardBox);
             }
-            for (Iterator<Article> i = articles.iterator(); i.hasNext();) {
-                Article item = i.next();
+            for (Iterator<Posts> i = articles.iterator(); i.hasNext();) {
+                Posts item = i.next();
                 FXMLLoader fxmlLoader1 = new FXMLLoader();
                 fxmlLoader1.setLocation(getClass().getResource("article.fxml"));
                 VBox bookBox = fxmlLoader1.load();
@@ -207,49 +209,60 @@ public class FXMLArticlesController implements Initializable {
         stage.show();
     }
 
-    private List<Article> recentlyadded() {
-        List<Article> ls = new ArrayList<>();
-        Article article = new Article();
+    private List<Posts> recentlyadded() {
+        List<Posts> ls = new ArrayList<>();
+        Posts article = new Posts();
         article.setTitle("Rich dad poor dad");
-        article.setImage("/img/glad.jpg");
+        article.setPicture("/img/glad.jpg");
         article.setContent("MAHDI \nZALTNI");
         Date d = new Date();
-        article.setDate(d);
+        article.setCreated_at(d);
 
         ls.add(article);
 
-        article = new Article();
+        article = new Posts();
         article.setTitle("The Hound Of The Baskervilles ");
-        article.setImage("/img/mahdi.jpg");
+        article.setPicture("/img/mahdi.jpg");
         article.setContent("ARTHUR \nCONAN DWAYNE");
         ls.add(article);
 
-        article = new Article();
+        article = new Posts();
         article.setTitle("les Miserables ");
-        article.setImage("/img/mahdi.jpg");
+        article.setPicture("/img/mahdi.jpg");
         article.setContent("ARTHUR \nCONAN DWAYNE");
         ls.add(article);
         return ls;
 
     }
 
-    public ObservableList<Article> getArticleList() {
-        ObservableList<Article> articleList = FXCollections.observableArrayList();
-        String query = "SELECT * FROM article WHERE archived='" + 0 + "' ";
+    public ObservableList<Posts> getArticleList() {
+        ObservableList<Posts> articleList = FXCollections.observableArrayList();
+        String query = "SELECT * FROM posts WHERE archived='" + 0 + "' ";
         Statement st;
         ResultSet rs;
 
         try {
             st = cnx.createStatement();
             rs = st.executeQuery(query);
-            Article articles;
             while (rs.next()) {
-                articles = new Article(rs.getInt("id"), rs.getString("title"), rs.getString("content"), rs.getDate("date"), rs.getInt("liked"), rs.getInt("idcat"), rs.getString("image"), rs.getInt("totalReactions"), rs.getInt("nbComments"), rs.getInt("nbShares"), rs.getInt("user_id"));
-                articleList.add(articles);
+                Posts p = new Posts();
+
+                p.setId(rs.getInt(1));
+                p.setTitle(rs.getString("title"));
+                p.setContent(rs.getString("content"));
+                p.setObjet(rs.getString("objet"));
+                p.setArchived(rs.getString("archived"));
+                p.setPicture(rs.getString("picture"));
+                p.setCreated_at(rs.getDate("created_at"));
+                p.setIdcat(rs.getInt("idcat"));
+                p.setUser_id(rs.getInt("user_id"));
+                p.setNblikes(rs.getInt("nblikes"));
+                articleList.add(p);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
+        System.out.println("javafxapplication3.FXMLArticlesController.getArticleList()" + articleList);
         return articleList;
     }
 

@@ -6,7 +6,7 @@
 package Services;
 
 import Modal.Comments;
- import Modal.Article;
+ import Modal.Posts;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -42,7 +42,7 @@ private Connection cnx = ConnectionClass.getInstance().getCnx() ;
     }
 
     @Override
-    public List<Comments> afficher(Article a) {
+    public List<Comments> afficher(Posts a) {
      List<Comments> commentss = new ArrayList();
         try {
        

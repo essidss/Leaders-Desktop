@@ -73,7 +73,7 @@ public class SignupInterfaceController implements Initializable{
     private void ajouterUser(ActionEvent event) throws Exception{
         ServiceUser sp = new ServiceUser();
         Random rand = new Random();
-        User s = new User(email.getText(),username.getText(),"Role_USER",password.getText(),imgurl,"Active");
+        User s = new User(email.getText(),username.getText(),"[\"ROLE_USER\"]",password.getText(),imgurl,"Active");
         if((sp.ajouter(s)==true) && (email.getText()!="")&&(username.getText()!="")&&(password.getText()!="")){
         int n = rand.nextInt(50);
             JavaMail.send(
@@ -81,7 +81,7 @@ public class SignupInterfaceController implements Initializable{
             "211JMT2082",
             email.getText(),
             "Bienvenu sur GEEK",
-            "dfgdg");
+            "bienvenue sur notre plateform");
          //   JavaMail.sendMail("leith.ghandri@gmail.com");
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Test");

@@ -9,10 +9,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import Modal.Account;
-import Modal.Article;
+import Modal.Posts;
 import Modal.Post;
 import Modal.Reactions;
-import Services.ServiceArticle;
+import Services.ServicePosts;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import static java.lang.String.format;
@@ -92,7 +92,7 @@ public class PostController implements Initializable {
     private long startTime = 0;
     private Reactions currentReaction;
     // private Post post;
-    private Article post;
+    private Posts post;
     final DateFormat format = DateFormat.getInstance();
 
     @FXML
@@ -145,31 +145,31 @@ public class PostController implements Initializable {
     }
 
     public void setReaction(Reactions reaction) {
-            ServiceArticle sa = new ServiceArticle();
+            ServicePosts sa = new ServicePosts();
 
         Image image = new Image(getClass().getResourceAsStream(reaction.getImgSrc()));
         imgReaction.setImage(image);
         reactionName.setText(reaction.getName());
         reactionName.setTextFill(Color.web(reaction.getColor()));
 
-        if (currentReaction == Reactions.NON) {
-            post.setTotalReactions(post.getTotalReactions() + 1);
-            sa.likedarticle(post); 
-       // post.setLiked(1);
-
-        }
-
-        currentReaction = reaction;
-
-        if (currentReaction == Reactions.NON) {
-            post.setTotalReactions(post.getTotalReactions() - 1);
-            sa.Dislikedarticle(post);
-        }
-
-        nbReactions.setText(String.valueOf(post.getTotalReactions()));
+//        if (currentReaction == Reactions.NON) {
+//            post.setTotalReactions(post.getTotalReactions() + 1);
+//            sa.likedarticle(post); 
+//       // post.setLiked(1);
+//
+//        }
+//
+//        currentReaction = reaction;
+//
+//        if (currentReaction == Reactions.NON) {
+//            post.setTotalReactions(post.getTotalReactions() - 1);
+//            sa.Dislikedarticle(post);
+//        }
+//
+//        nbReactions.setText(String.valueOf(post.getTotalReactions()));
     }
 
-    public void setData(Article post) {
+    public void setData(Posts post) {
         this.post = post;
         Image img;
         // img = new Image(getClass().getResourceAsStream(post.getAccount().getProfileImg()));
@@ -201,8 +201,8 @@ public class PostController implements Initializable {
           
         Image image = null;
         try {
-            System.out.println("C:\\Users\\hp\\Documents\\NetBeansProjects\\JavaFXApplication3\\src\\img\\" + post.getImage());
-            image = new Image(new FileInputStream("C:\\Users\\hp\\Documents\\NetBeansProjects\\JavaFXApplication3\\src\\img\\" + post.getImage()));
+            System.out.println("C:\\Users\\hp\\Documents\\NetBeansProjects\\JavaFXApplication3\\src\\img\\" + post.getPicture());
+            image = new Image(new FileInputStream("C:\\Users\\hp\\Documents\\NetBeansProjects\\JavaFXApplication3\\src\\img\\" + post.getPicture()));
         } catch (FileNotFoundException ex) {
             System.out.println(ex);
         }
@@ -217,15 +217,15 @@ public class PostController implements Initializable {
 
         nbReactions.setText(String.valueOf(post.getId()));
         System.out.println("nb"+nbReactions);
-        nbComments.setText(post.getNbComments() + " comments");
-        nbShares.setText(post.getNbShares() + " shares");
+//        nbComments.setText(post.getNbComments() + " comments");
+//        nbShares.setText(post.getNbShares() + " shares");
 
         currentReaction = Reactions.NON;
     }
 
-    private Article getPost() {
+    private Posts getPost() {
         Post post = new Post();
-        Article article = new Article();
+        Posts article = new Posts();
 
         Account account = new Account();
         account.setName("Mahmoud Hamwi");
@@ -240,19 +240,19 @@ public class PostController implements Initializable {
         post.setTotalReactions(10);
         post.setNbComments(2);
         post.setNbShares(3);
-        article.setNbComments(10);
+//        article.setNbComments(10);
 
         return article;
     }
 
-    public void setArticle(Article article) {
-        //Article articles = new Article(id);
+    public void setArticle(Posts article) {
+        //Article articles = new Posts(id);
         // caption.setText(String.valueOf(id));
         caption.setText(article.getTitle());
 
-        nbReactions.setText(String.valueOf(article.getTotalReactions()));
-        nbComments.setText(article.getNbComments() + " comments");
-        nbShares.setText(article.getNbShares() + " shares");
+//        nbReactions.setText(String.valueOf(article.getTotalReactions()));
+//        nbComments.setText(article.getNbComments() + " comments");
+//        nbShares.setText(article.getNbShares() + " shares");
 
     }
 

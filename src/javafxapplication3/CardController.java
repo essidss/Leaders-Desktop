@@ -4,7 +4,7 @@
  */
 package javafxapplication3;
 
-import Modal.Article;
+import Modal.Posts;
 import Modal.Category;
 import java.io.IOException;
 import java.net.URL;
@@ -57,7 +57,7 @@ public class CardController implements Initializable {
         // TODO
     }
 
- public void setArticle(Article article) {
+ public void setArticle(Posts article) {
         //Image image = new Image(getClass().getResourceAsStream(article.getImage()));
        // ArticleImage.setImage(image);
         articleName.setText(article.getTitle());

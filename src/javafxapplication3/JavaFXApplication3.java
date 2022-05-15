@@ -4,9 +4,9 @@
  */
 package javafxapplication3;
 
-import Modal.Article;
+import Modal.Posts;
 import Modal.User;
-import Services.ServiceArticle;
+import Services.ServicePosts;
 import Services.ServiceComment;
 import Services.ServiceUser;
 import java.util.ArrayList;
@@ -43,15 +43,12 @@ public class JavaFXApplication3 extends Application {
        User  user = serviceUser.findByUserId(5);
   System.out.print(serviceUser.findByUserId(5).toString());*/
 
-/*ServiceArticle ps = new ServiceArticle();
-Date d = new Date();
-      Article t = new Article( "mahdi","zaltni",d,"274585352-1134065580779382-2619872694102213168-n-624eac1879528.jpeg");
-ps.ajouter(t);
+//ServicePosts ps = new ServicePosts();
+//   ServiceUser ss = new ServiceUser();
+//  System.out.print(ps.getArticle().toString());
+ // System.out.print(ss.afficher().toString());
+
  
-  System.out.print(ps.getArticle().toString());
-List<Article> list = (ArrayList)ps.afficher();
-ServiceComment sc = new ServiceComment();
-   t.setId(32);*/
   
 
     }

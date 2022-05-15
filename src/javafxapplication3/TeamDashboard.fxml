@@ -57,7 +57,7 @@
       </VBox>
       <Pane layoutX="260.0" layoutY="89.0" prefHeight="94.0" prefWidth="851.0" style="-fx-background-color: #7C99AC;">
          <children>
-            <TextField fx:id="searchteam" layoutX="534.0" layoutY="31.0" prefHeight="33.0" prefWidth="263.0" style="-fx-background-color: #ffffff;" />
+            <TextField fx:id="searchteam" layoutX="534.0" layoutY="31.0" onKeyPressed="#search" prefHeight="33.0" prefWidth="263.0" style="-fx-background-color: #ffffff;" />
             <ImageView fitHeight="33.0" fitWidth="42.0" layoutX="800.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);">
                <image>
                   <Image url="@../Images/icons8-search-64.png" />
@@ -73,7 +73,7 @@
                   <Image url="@../Images/icons8-delete-trash-100.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="ref" fitHeight="69.0" fitWidth="84.0" layoutX="170.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);">
+            <ImageView fx:id="ref" fitHeight="69.0" fitWidth="84.0" layoutX="170.0" layoutY="14.0" onMouseClicked="#affiche" pickOnBounds="true" preserveRatio="true" style="-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);">
                <image>
                   <Image url="@../Images/icons8-refresh-64.png" />
                </image>
@@ -125,7 +125,7 @@
             <Font size="23.0" />
          </font>
       </Button>
-      <TableView fx:id="teamtable" layoutX="268.0" layoutY="190.0" prefHeight="614.0" prefWidth="837.0">
+      <TableView fx:id="teamtable" layoutX="268.0" layoutY="190.0" prefHeight="614.0" prefWidth="837.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0) dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);">
         <columns>
           <TableColumn fx:id="teamnametable" prefWidth="214.0" text="TeamName" />
           <TableColumn fx:id="descriptiontable" prefWidth="457.0" text="Description" />

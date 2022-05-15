@@ -5,12 +5,12 @@
 package javafxapplication3;
 
 import Connectivity.ConnectionClass;
-import Modal.Article;
+import Modal.Posts;
 import Modal.Category;
 import Modal.Post;
 import Modal.Reactions;
 import Services.LoginSession;
-import Services.ServiceArticle;
+import Services.ServicePosts;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -59,8 +59,8 @@ import org.json.JSONObject;
 public class ArticleController implements Initializable {
 
     private Connection cnx = ConnectionClass.getInstance().getCnx();
-    private List<Article> articles;
-    ServiceArticle servicearticle = new ServiceArticle();
+    private List<Posts> articles;
+    ServicePosts servicearticle = new ServicePosts();
 
     /**
      * Initializes the controller class.
@@ -71,8 +71,8 @@ public class ArticleController implements Initializable {
     private ImageView imgReaction;
     @FXML
     private VBox box;
-   
-@FXML
+
+    @FXML
     private ImageView bookimage;
     @FXML
     private ImageView delete;
@@ -121,8 +121,8 @@ public class ArticleController implements Initializable {
         rating();
         msg.setVisible(false);
         textrate.setVisible(false);
- 
-     }
+
+    }
 
     @FXML
     public void rating() {
@@ -135,39 +135,37 @@ public class ArticleController implements Initializable {
 
     }
 
-public Boolean ISRATE(int id,int iduser)
-{
-try
-{
-    Statement stm = cnx.createStatement();
-    String querry  = "SELECT * FROM `rating` WHERE user_id='"+iduser+"' and post_id="+ idArticle.getText() +"";
-                 ResultSet rs= stm.executeQuery(querry);
-if (rs.isBeforeFirst()){
-    System.out.println("rate already exists");
-return true;
-}
+    public Boolean ISRATE(int id, int iduser) {
+        try {
+            Statement stm = cnx.createStatement();
+            String querry = "SELECT * FROM `rating` WHERE user_id='" + iduser + "' and post_id=" + idArticle.getText() + "";
+            ResultSet rs = stm.executeQuery(querry);
+            if (rs.isBeforeFirst()) {
+                System.out.println("rate already exists");
+                return true;
+            }
 
-}catch (SQLException ex) {
-        System.out.print(ex);
+        } catch (SQLException ex) {
+            System.out.print(ex);
         }
-return false;
+        return false;
 
-}
+    }
+
     @FXML
     void rate(MouseEvent event) {
- 
-int id = Integer.parseInt(String.valueOf(idArticle.getText()));
-        if (ISRATE(id,LoginSession.UID)==true)
-{
-    System.out.println("vous avez deja rater cet article");
-      String query1 = "update rating  set nbr_etoiles='" + textrate.getText() + "' WHERE post_id=" + idArticle.getText() + " and user_id='"+LoginSession.UID+"'";
-        executeQuery(query1);
-}  
 
-if (ISRATE(157,LoginSession.UID)==false) {
-         String query = "INSERT INTO rating ( nbr_etoiles, post_id,user_id ) VALUES ('" + textrate.getText() + "' ,(SELECT id FROM article WHERE id=" + idArticle.getText() + " ),'"+LoginSession.UID+"')";
-        executeQuery(query);
-}
+        int id = Integer.parseInt(String.valueOf(idArticle.getText()));
+        if (ISRATE(id, LoginSession.UID) == true) {
+            System.out.println("vous avez deja rater cet article");
+            String query1 = "update rating  set nbr_etoiles='" + textrate.getText() + "' WHERE post_id=" + idArticle.getText() + " and user_id='" + LoginSession.UID + "'";
+            executeQuery(query1);
+        }
+
+        if (ISRATE(157, LoginSession.UID) == false) {
+            String query = "INSERT INTO rating ( nbr_etoiles, post_id,user_id ) VALUES ('" + textrate.getText() + "' ,(SELECT id FROM posts WHERE id=" + idArticle.getText() + " ),'" + LoginSession.UID + "')";
+            executeQuery(query);
+        }
 
     }
 
@@ -197,19 +195,30 @@ if (ISRATE(157,LoginSession.UID)==false) {
         //nbReactions.setText(String.valueOf(post.getTotalReactions()));
     }
 
-    public ObservableList<Article> getArticleList() {
-        ObservableList<Article> articleList = FXCollections.observableArrayList();
-        String query = "SELECT * FROM article WHERE archived='" + 0 + "' ";
+    public ObservableList<Posts> getArticleList() {
+        ObservableList<Posts> articleList = FXCollections.observableArrayList();
+        String query = "SELECT * FROM posts WHERE archived='" + 0 + "' ";
         Statement st;
         ResultSet rs;
 
         try {
             st = cnx.createStatement();
             rs = st.executeQuery(query);
-            Article articles;
+            Posts articles;
             while (rs.next()) {
-                articles = new Article(rs.getInt("id"), rs.getString("title"), rs.getString("content"), rs.getDate("date"), rs.getInt("liked"), rs.getInt("idcat"));
-                articleList.add(articles);
+                Posts p = new Posts();
+
+                p.setId(rs.getInt(1));
+                p.setTitle(rs.getString("title"));
+                p.setContent(rs.getString("content"));
+                p.setObjet(rs.getString("objet"));
+                p.setArchived(rs.getString("archived"));
+                p.setPicture(rs.getString("picture"));
+                p.setCreated_at(rs.getDate("created_at"));
+                p.setIdcat(rs.getInt("idcat"));
+                p.setUser_id(rs.getInt("user_id"));
+                p.setNblikes(rs.getInt("nblikes"));
+                articleList.add(p);
             }
         } catch (Exception e) {
             // e.printStackTrace();
@@ -217,27 +226,27 @@ if (ISRATE(157,LoginSession.UID)==false) {
         return articleList;
     }
 
-    public void setData(Article article) {
+    public void setData(Posts article) {
         Image image = null;
         try {
-            System.out.println("C:\\Users\\hp\\Documents\\NetBeansProjects\\JavaFXApplication3\\src\\img\\" + article.getImage());
-            image = new Image(new FileInputStream("C:\\Users\\hp\\Documents\\NetBeansProjects\\JavaFXApplication3\\src\\img\\" + article.getImage()));
+            System.out.println("C:\\Users\\hp\\Documents\\NetBeansProjects\\JavaFXApplication3\\src\\img\\" + article.getPicture());
+            image = new Image(new FileInputStream("C:\\Users\\hp\\Documents\\NetBeansProjects\\JavaFXApplication3\\src\\img\\" + article.getPicture()));
         } catch (FileNotFoundException ex) {
         }
         // ServiceUser serviceUser =new ServiceUser();
         // User  user = serviceUser.findByUserId(article.getUser_id());
         bookimage.setImage(image);
 
-         booktitle.setText(article.getTitle());
+        booktitle.setText(article.getTitle());
 //        username.setText(user.getUsername());
         //  System.out.println(""+user.getUsername());
 //        bookauthor.setText(article.getContent());
         //booktitle.setVisible(false);
         idArticle.setText((String.valueOf(article.getId())));
-        idArticle.setVisible(false);
+        idArticle.setVisible(true);
         iduser.setText((String.valueOf(article.getUser_id())));
         iduser.setVisible(false);
-        view.setText((String.valueOf(article.getNbShares())));
+        view.setText((String.valueOf(article.getNbviews())));
 
         if (LoginSession.UID == article.getUser_id()) {
             delete.setVisible(true);
@@ -285,10 +294,10 @@ if (ISRATE(157,LoginSession.UID)==false) {
 //        return filtr;
 //    }
 
-    public static Article getArticlers(ResultSet rs) throws SQLException {
-        Article emp = null;
+    public static Posts getArticlers(ResultSet rs) throws SQLException {
+        Posts emp = null;
         if (rs.next()) {
-            emp = new Article();
+            emp = new Posts();
             emp.setId(rs.getInt("id"));
             emp.setTitle(rs.getString("title"));
             emp.setContent(rs.getString("content"));
@@ -313,8 +322,8 @@ if (ISRATE(157,LoginSession.UID)==false) {
         //home_page_parent = FXMLLoader.load(getClass().getResource("post.fxml"));
         String title = booktitle.getText();
         int id = Integer.parseInt(idArticle.getText());
-        ServiceArticle sp = new ServiceArticle();
-        Article article = sp.findByArticleId(id);
+        ServicePosts sp = new ServicePosts();
+        Posts article = sp.findByArticleId(id);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("post.fxml"));
         Parent root1 = (Parent) fxmlLoader.load();
         sp.setView(id);
@@ -348,8 +357,7 @@ if (ISRATE(157,LoginSession.UID)==false) {
 
         String query = "UPDATE `article` SET `archived`='" + 1 + "' WHERE id=" + idArticle.getText() + "";
         executeQuery(query);
-box.getChildren().clear();
-
+        box.getChildren().clear();
 
     }
 
@@ -358,9 +366,9 @@ box.getChildren().clear();
         try {
             String title = booktitle.getText();
             int id = Integer.parseInt(idArticle.getText());
-            ServiceArticle sp = new ServiceArticle();
+            ServicePosts sp = new ServicePosts();
 
-            Article article = sp.findByArticleId(id);
+            Posts article = sp.findByArticleId(id);
 
 //            FXMLLoader loader = new FXMLLoader(getClass().getResource("Modifierblog.fxml"));
 //            root = loader.load();

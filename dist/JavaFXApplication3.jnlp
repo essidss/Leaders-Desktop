@@ -8,17 +8,51 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="JavaFXApplication3.jar" size="27592271" download="eager" />
+    <jar href="JavaFXApplication3.jar" size="29969683" download="eager" />
+    <jar href="lib\NotificationAPI.jar" size="2821" download="eager" />
+    <jar href="lib\argon2-jvm-2.5.jar" size="407137" download="eager" />
+    <jar href="lib\barcode4j.jar" size="256468" download="eager" />
+    <jar href="lib\controlsfx-8.40.11 (1).jar" size="985420" download="eager" />
+    <jar href="lib\controlsfx-8.40.11.jar" size="985420" download="eager" />
     <jar href="lib\controlsfx-8.40.15.jar" size="1402490" download="eager" />
     <jar href="lib\controlsfx-samples-8.40.15.jar" size="792003" download="eager" />
+    <jar href="lib\core-3.3.0-javadoc.jar" size="1073633" download="eager" />
+    <jar href="lib\core-3.3.0.jar" size="541078" download="eager" />
+    <jar href="lib\core-java6-3.2.0.jar" size="544897" download="eager" />
+    <jar href="lib\dom4j-1.6.1.jar" size="313898" download="eager" />
+    <jar href="lib\fontawesomefx-8.9.jar" size="571068" download="eager" />
+    <jar href="lib\fontawesomefx-glyphsbrowser-all-1.0.jar" size="1662483" download="eager" />
     <jar href="lib\fxsampler-1.0.10.jar" size="30876" download="eager" />
+    <jar href="lib\gson-2.2.2.jar" size="189285" download="eager" />
+    <jar href="lib\gson-2.6.2-javadoc.jar" size="260989" download="eager" />
+    <jar href="lib\gson-2.8.2-javadoc.jar" size="263440" download="eager" />
+    <jar href="lib\gson-2.8.2.jar" size="232932" download="eager" />
+    <jar href="lib\itext-pdfa-5.5.8.jar" size="114222" download="eager" />
+    <jar href="lib\itext-xtra-5.5.13.2.jar" size="120745" download="eager" />
+    <jar href="lib\itextpdf-5.3.4.jar" size="1810034" download="eager" />
+    <jar href="lib\itextpdf-5.4.3.jar" size="2070978" download="eager" />
+    <jar href="lib\javase-java6-3.2.0.jar" size="38268" download="eager" />
+    <jar href="lib\javax.mail.jar" size="659033" download="eager" />
+    <jar href="lib\jfoenix-8.0.1.jar" size="2405715" download="eager" />
+    <jar href="lib\jna-4.2.1.jar" size="1137285" download="eager" />
     <jar href="lib\json-20220320.jar" size="70939" download="eager" />
+    <jar href="lib\jxbrowser-2.8.jar" size="681893" download="eager" />
     <jar href="lib\mailapi.jar" size="462098" download="eager" />
     <jar href="lib\mysql-connector-java-8.0.28.jar" size="2476480" download="eager" />
     <jar href="lib\okhttp-3.8.0.jar" size="398107" download="eager" />
     <jar href="lib\okio-1.13.0.jar" size="81811" download="eager" />
+    <jar href="lib\poi-3.8-beta1.jar" size="1710504" download="eager" />
+    <jar href="lib\poi-4.1.2.jar" size="2915337" download="eager" />
+    <jar href="lib\poi-ooxml-3.8-beta1.jar" size="501119" download="eager" />
+    <jar href="lib\poi-ooxml-schemas-3.8-beta1.jar" size="3978738" download="eager" />
+    <jar href="lib\screenshot-maven-plugin-api-1.0.5.jar" size="241845" download="eager" />
     <jar href="lib\simplecaptcha-1.2.1.jar" size="2007760" download="eager" />
     <jar href="lib\smtp.jar" size="55147" download="eager" />
+    <jar href="lib\stax-api-1.0.1.jar" size="26514" download="eager" />
+    <jar href="lib\twilio-8.9.0-jar-with-dependencies.jar" size="8358946" download="eager" />
+    <jar href="lib\wunderground-core-1.0.8-jar-with-dependencies.jar" size="3042937" download="eager" />
+    <jar href="lib\xml-apis-1.0.b2.jar" size="109318" download="eager" />
+    <jar href="lib\xmlbeans-2.3.0.jar" size="2666695" download="eager" />
   </resources>
   <jfx:javafx-desc  width="800" height="600" main-class="javafxapplication3.JavaFXApplication3"  name="JavaFXApplication3" />
   <update check="always"/>

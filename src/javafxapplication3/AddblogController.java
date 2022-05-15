@@ -4,8 +4,8 @@
  */
 package javafxapplication3;
 
-import Modal.Article;
-import Services.ServiceArticle;
+import Modal.Posts;
+import Services.ServicePosts;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -71,8 +71,8 @@ public class AddblogController implements Initializable {
             alert.setContentText("veuillez remplir tous les champs");
             alert.showAndWait();
         } else {
-            Article p = new Article();
-            p.setImage(label_photo.getText());
+            Posts p = new Posts();
+            p.setPicture(label_photo.getText());
             p.setTitle(titlefield.getText());
             p.setContent(contentfield.getText());
             p.setUser_id(LoginSession.UID);
@@ -86,7 +86,7 @@ public class AddblogController implements Initializable {
 
             // show the dialog
             a1.show();
-            ServiceArticle sp = new ServiceArticle();
+            ServicePosts sp = new ServicePosts();
             sp.ajouter(p);
         }
     }

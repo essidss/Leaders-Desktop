@@ -79,6 +79,71 @@
                   <Font name="Apple Braille" size="17.0" />
                </font>
             </Button>
+            <Separator layoutX="10.0" layoutY="400.0" prefHeight="15.0" prefWidth="250.0" />
+            <Button fx:id="btnAnnonces" mnemonicParsing="false" onAction="#switchToAnnonce" prefHeight="59.0" prefWidth="247.0" style="-fx-background-color: #D3DEDC; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);" text="Annonces">
+               <graphic>
+                  <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../Desktop/gestion_annonce/src/img/writing.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Apple Braille" size="17.0" />
+               </font>
+            </Button>
+            <Separator layoutX="10.0" layoutY="475.0" prefHeight="15.0" prefWidth="250.0" />
+            <Button mnemonicParsing="false" onAction="#switchToEvent" prefHeight="59.0" prefWidth="247.0" style="-fx-background-color: #D3DEDC; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);" text="List Events">
+               <graphic>
+                  <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../Desktop/gestion_annonce/src/img/writing.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Apple Braille" size="17.0" />
+               </font>
+            </Button>
+            <Separator layoutX="10.0" layoutY="550.0" prefHeight="15.0" prefWidth="250.0" />
+            <Button fx:id="btnCat11" mnemonicParsing="false" onAction="#switchToEventCategorie" prefHeight="59.0" prefWidth="247.0" style="-fx-background-color: #D3DEDC; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);" text="List Events Category">
+               <graphic>
+                  <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../Desktop/gestion_annonce/src/img/writing.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Apple Braille" size="17.0" />
+               </font>
+            </Button>
+            <Separator layoutX="10.0" layoutY="616.0" prefHeight="15.0" prefWidth="250.0" />
+            <Button fx:id="btnCat111" mnemonicParsing="false" onAction="#switchToListReponse" prefHeight="59.0" prefWidth="247.0" style="-fx-background-color: #D3DEDC; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);" text="List Reply">
+               <graphic>
+                  <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../Desktop/gestion_annonce/src/img/writing.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Apple Braille" size="17.0" />
+               </font>
+            </Button>
+            <Separator layoutX="10.0" layoutY="679.0" prefHeight="15.0" prefWidth="250.0" />
+            <Button fx:id="btnCat1111" mnemonicParsing="false" onAction="#switchToClaims" prefHeight="59.0" prefWidth="247.0" style="-fx-background-color: #D3DEDC; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);" text="List Claims">
+               <graphic>
+                  <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../Desktop/gestion_annonce/src/img/writing.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font name="Apple Braille" size="17.0" />
+               </font>
+            </Button>
          </children>
       </VBox>
       <Pane layoutX="250.0" layoutY="79.0" prefHeight="94.0" prefWidth="851.0" style="-fx-background-color: #7C99AC;">

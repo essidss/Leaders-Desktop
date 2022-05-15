@@ -5,9 +5,9 @@
 package javafxapplication3;
 
 import Connectivity.copyImage;
-import Modal.Article;
+import Modal.Posts;
 import Modal.Category;
-import Services.ServiceArticle;
+import Services.ServicePosts;
 import Services.ServiceCategory;
 import java.io.IOException;
 import java.net.URL;

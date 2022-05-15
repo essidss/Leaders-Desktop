@@ -49,14 +49,14 @@ public String urll;
 ServiceUser serviceUser =new ServiceUser();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    File file = new File("C:\\Users\\hp\\Documents\\NetBeansProjects\\JavaFXApplication3\\src\\images\\"+LoginSession.avatar);
+    File file = new File("C:\\Users\\hp\\Documents\\NetBeansProjects\\JavaFXApplication3\\src\\images\\"+LoginSession.picture_profil);
            try {
                String localUrl = file.toURI().toURL().toString();
                imgprof.setFitHeight(150);
                imgprof.setFitWidth(150);
                Image image = new Image(localUrl);
                imgprof.setImage(image);
-               System.err.println(",hjbkjh kjgk"+LoginSession.avatar);
+               System.err.println(",hjbkjh kjgk"+LoginSession.picture_profil);
                
            } catch (MalformedURLException ex) {
                System.out.println(ex);;

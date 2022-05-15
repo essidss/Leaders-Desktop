@@ -5,9 +5,9 @@
 package javafxapplication3;
 
 import Connectivity.ConnectionClass;
-import Modal.Article;
+import Modal.Posts;
 import Modal.Category;
-import Services.ServiceArticle;
+import Services.ServicePosts;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -93,9 +93,9 @@ public class CategorieController implements Initializable {
     public void updatebutton(MouseEvent event) {
         try {
          idcat.setText((String.valueOf(article.getIdcat())));
-            ServiceArticle sp = new ServiceArticle();
+            ServicePosts sp = new ServicePosts();
 
-            Article article = sp.findByArticleId(id);
+            Posts article = sp.findByArticleId(id);
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("Modifierblog.fxml"));
             root = loader.load();

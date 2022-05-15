@@ -5,9 +5,9 @@
 package javafxapplication3;
 
 import Connectivity.ConnectionClass;
-import Modal.Article;
+import Modal.Posts;
 import Modal.Category;
-import Services.ServiceArticle;
+import Services.ServicePosts;
 import Services.ServiceCategory;
 import java.io.IOException;
 import java.net.URL;
@@ -45,10 +45,10 @@ public class ModifierblogController implements Initializable {
 
     private Connection cnx = ConnectionClass.getInstance().getCnx();
 
-    private Article a;
+    private Posts a;
     ValidationSupport validationsupport = new ValidationSupport();
 
-    public void setA(Article a) {
+    public void setA(Posts a) {
         this.a = a;
         titlefield.setText("" + a.getContent());
     }
@@ -80,32 +80,33 @@ public class ModifierblogController implements Initializable {
         // title.setText(""+a.getId());
 // String nom = tfcategory.getSelectionModel().getSelectedItem();
 //Category c = new Category();
-        Article p = new Article();
+        Posts p = new Posts();
 //         c.setNom(nom);
 //
 //        c.setNom(tfcategory.getSelectionModel().getSelectedItem());
 
-        ServiceArticle sp = new ServiceArticle();
+        ServicePosts sp = new ServicePosts();
 //          c.setNom(tfcategory.getSelectionModel().getSelectedItem());
 // 
 //          sp.addtocategory(p, nom);
     }
 
-    public void setData(Article a) {
+    public void setData(Posts a) {
         validationsupport.registerValidator(contentfield, Validator.createEmptyValidator("Contentfield is required"));
         validationsupport.registerValidator(titlefield, Validator.createEmptyValidator("titlefield is required"));
 
         titlefield.setText("" + a.getTitle());
         contentfield.setText(a.getContent());
-       // title.setText("" + a.getId());
+        title.setText("" + a.getId());
+       title.setVisible(false);
 
     }
 
     @FXML
     void Modifier(ActionEvent event) {
 
-        int id = Integer.parseInt(title.getText());
-        String query = "UPDATE article SET title='" + titlefield.getText() + "',content='" + contentfield.getText() + "'  WHERE id=" + id + "";
+       // int id = Integer.parseInt(title.getText());
+        String query = "UPDATE article SET title='" + titlefield.getText() + "',content='" + contentfield.getText() + "'  WHERE id=" + title.getText() + "";
         Alert a1 = new Alert(Alert.AlertType.NONE,
                 "Voulez vous ajouter", ButtonType.APPLY);
 
@@ -122,12 +123,12 @@ public class ModifierblogController implements Initializable {
     void Accdat(ActionEvent event) {
         String nom = tfcategory.getSelectionModel().getSelectedItem();
         Category c = new Category();
-        Article p = new Article();
+        Posts p = new Posts();
         c.setNom(nom);
 
         c.setNom(tfcategory.getSelectionModel().getSelectedItem());
 
-        ServiceArticle sp = new ServiceArticle();
+        ServicePosts sp = new ServicePosts();
         c.setNom(tfcategory.getSelectionModel().getSelectedItem());
 
         sp.addtocategory(p, nom);

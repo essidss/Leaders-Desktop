@@ -59,10 +59,10 @@ public class FrontController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       /* if(LoginSession.Role.equals("Role_USER")){
+        if(LoginSession.Role.equals("Role_USER")){
             dash.setDisable(true);
             dash.setVisible(false);
-        }*/
+        }
     }    
     public void teamItems(){
         list=serviceTeam.afficher();
@@ -118,5 +118,30 @@ public class FrontController implements Initializable {
         stage.setScene(scene);
         stage.show();    
     }
+     public void switchToAnnonces(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("AnnonceController.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setTitle("Annonce");
+        stage.setScene(scene);
+        stage.show();
+    }
+    public void switchToEvent(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("EventAffichageFront.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setTitle("Annonce");
+        stage.setScene(scene);
+        stage.show();
+    }
     
+    public void switchToReclamation(ActionEvent event) throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("ADD_Reclamation.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setTitle("Annonce");
+        stage.setScene(scene);
+        stage.show();
+    }
+
 }

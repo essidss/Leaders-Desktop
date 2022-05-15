@@ -5,11 +5,11 @@
 package javafxapplication3;
 
 import Connectivity.ConnectionClass;
-import Modal.Article;
+import Modal.Posts;
 import Modal.User;
-import Services.ServiceArticle;
+import Services.ServicePosts;
 import Services.ServiceUser;
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.time;
+//import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.time;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -57,7 +57,7 @@ public class ArticlesDashboardController implements Initializable {
     private Connection cnx = ConnectionClass.getInstance().getCnx();
 
  @FXML
-    private TableView<Article> ArticleTable;
+    private TableView<Posts> ArticleTable;
 
     @FXML
     private Button Articles;
@@ -66,46 +66,46 @@ public class ArticlesDashboardController implements Initializable {
     private ChoiceBox<String> choiceBox;
 
     @FXML
-    private TableColumn<Article,Integer> culumnCategory;
+    private TableColumn<Posts,Integer> culumnCategory;
 
     @FXML
-    private TableColumn<Article,String> culumnContent;
+    private TableColumn<Posts,String> culumnContent;
 
     @FXML
-    private TableColumn<Article,Integer> culumnDate;
+    private TableColumn<Posts,Integer> culumnDate;
 
     @FXML
-    private TableColumn<Article,String> culumnTitle;
+    private TableColumn<Posts,String> culumnTitle;
 
     @FXML
-    private TableColumn<Article,Integer> culumnUsername;
+    private TableColumn<Posts,Integer> culumnUsername;
 
     @FXML
     private ImageView delete;
 @FXML
-    private TableView<Article> TableView;
+    private TableView<Posts> TableView;
 
     @FXML
-    private TableColumn<Article, Integer> idColumn;
+    private TableColumn<Posts, Integer> idColumn;
 
     @FXML
-    private TableColumn<Article, String> titleColumn;
+    private TableColumn<Posts, String> titleColumn;
 
     @FXML
-    private TableColumn<Article, String> authorColumn;
+    private TableColumn<Posts, String> authorColumn;
 
     @FXML
-    private TableColumn<Article, Integer> yearColumn;
+    private TableColumn<Posts, Integer> yearColumn;
 
     @FXML
-    private TableColumn<Article, Integer> likdecolumn;
+    private TableColumn<Posts, Integer> likdecolumn;
     @FXML
     private ComboBox<String> tfcategory;
 
     @FXML
-    private TableColumn<Article, Integer> categorycolumn;
+    private TableColumn<Posts, Integer> categorycolumn;
     @FXML
-    private TableView<Article> table;    
+    private TableView<Posts> table;    
 
     @FXML
     private Button frontteam;
@@ -127,8 +127,8 @@ public class ArticlesDashboardController implements Initializable {
 
     @FXML
     private Button user;
-    ObservableList<Article> listM;
-ServiceArticle servicearticle =new ServiceArticle();
+    ObservableList<Posts> listM;
+ServicePosts servicearticle =new ServicePosts();
     private volatile boolean stop=false;
 
     
@@ -142,14 +142,14 @@ ServiceArticle servicearticle =new ServiceArticle();
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         time();
-               ObservableList<Article> list = getArticleList();
+               ObservableList<Posts> list = getArticleList();
 
-        idColumn.setCellValueFactory(new PropertyValueFactory<Article, Integer>("id"));
-        titleColumn.setCellValueFactory(new PropertyValueFactory<Article, String>("title"));
-        authorColumn.setCellValueFactory(new PropertyValueFactory<Article, String>("content"));
-        yearColumn.setCellValueFactory(new PropertyValueFactory<Article, Integer>("date"));
-        likdecolumn.setCellValueFactory(new PropertyValueFactory<Article, Integer>("liked"));
-        categorycolumn.setCellValueFactory(new PropertyValueFactory<Article, Integer>("idcat"));
+        idColumn.setCellValueFactory(new PropertyValueFactory<Posts, Integer>("id"));
+        titleColumn.setCellValueFactory(new PropertyValueFactory<Posts, String>("title"));
+        authorColumn.setCellValueFactory(new PropertyValueFactory<Posts, String>("content"));
+        yearColumn.setCellValueFactory(new PropertyValueFactory<Posts, Integer>("date"));
+        likdecolumn.setCellValueFactory(new PropertyValueFactory<Posts, Integer>("liked"));
+        categorycolumn.setCellValueFactory(new PropertyValueFactory<Posts, Integer>("idcat"));
 
         TableView.setItems(list);
         
@@ -160,14 +160,14 @@ ServiceArticle servicearticle =new ServiceArticle();
 showArticles();
  }   
  public void showArticles() {
-        ObservableList<Article> list = getArticleList();
+        ObservableList<Posts> list = getArticleList();
 
-        idColumn.setCellValueFactory(new PropertyValueFactory<Article, Integer>("id"));
-        titleColumn.setCellValueFactory(new PropertyValueFactory<Article, String>("title"));
-        authorColumn.setCellValueFactory(new PropertyValueFactory<Article, String>("content"));
-        yearColumn.setCellValueFactory(new PropertyValueFactory<Article, Integer>("date"));
-        likdecolumn.setCellValueFactory(new PropertyValueFactory<Article, Integer>("liked"));
-        categorycolumn.setCellValueFactory(new PropertyValueFactory<Article, Integer>("idcat"));
+        idColumn.setCellValueFactory(new PropertyValueFactory<Posts, Integer>("id"));
+        titleColumn.setCellValueFactory(new PropertyValueFactory<Posts, String>("title"));
+        authorColumn.setCellValueFactory(new PropertyValueFactory<Posts, String>("content"));
+        yearColumn.setCellValueFactory(new PropertyValueFactory<Posts, Integer>("date"));
+        likdecolumn.setCellValueFactory(new PropertyValueFactory<Posts, Integer>("liked"));
+        categorycolumn.setCellValueFactory(new PropertyValueFactory<Posts, Integer>("idcat"));
 
         TableView.setItems(list);
     } 
@@ -187,16 +187,16 @@ showArticles();
             alert.setContentText("Are you sure to delete ?");
             Optional <ButtonType> action =alert.showAndWait();
             if(action.get()==ButtonType.OK){
-                    Article article= new Article();
+                    Posts article= new Posts();
                     article=ArticleTable.getSelectionModel().getSelectedItem();
                     servicearticle.supprimer(article);
                     listM.removeAll(listM);
-                    listM=(ObservableList<Article>) servicearticle.afficher();
-                    culumnTitle.setCellValueFactory(new PropertyValueFactory<Article,String>("title"));
-                    culumnUsername.setCellValueFactory(new PropertyValueFactory<Article,Integer>("author"));
-                    culumnContent.setCellValueFactory(new PropertyValueFactory<Article,String>("content"));
-                    culumnCategory.setCellValueFactory(new PropertyValueFactory<Article,Integer>("idcat"));
-                    culumnDate.setCellValueFactory(new PropertyValueFactory<Article,Integer>("date"));
+                    listM=(ObservableList<Posts>) servicearticle.afficher();
+                    culumnTitle.setCellValueFactory(new PropertyValueFactory<Posts,String>("title"));
+                    culumnUsername.setCellValueFactory(new PropertyValueFactory<Posts,Integer>("author"));
+                    culumnContent.setCellValueFactory(new PropertyValueFactory<Posts,String>("content"));
+                    culumnCategory.setCellValueFactory(new PropertyValueFactory<Posts,Integer>("idcat"));
+                    culumnDate.setCellValueFactory(new PropertyValueFactory<Posts,Integer>("date"));
 
                    ArticleTable.setItems(listM);
             }
@@ -256,22 +256,33 @@ private void time(){
     void tree(MouseEvent event) {
 
     }
-  public ObservableList<Article> getArticleList() {
-        ObservableList<Article> articleList = FXCollections.observableArrayList();
-         String query = "SELECT article.id,article.title,article.content ,article.date,article.liked,article.idcat FROM article WHERE archived='" + 0 + "'  ";
+   public ObservableList<Posts> getArticleList() {
+        ObservableList<Posts> articleList = FXCollections.observableArrayList();
+        String query = "SELECT * FROM post WHERE archived='" + 0 + "' ";
         Statement st;
         ResultSet rs;
 
         try {
             st = cnx.createStatement();
             rs = st.executeQuery(query);
-            Article articles;
+            Posts articles;
             while (rs.next()) {
-                articles = new Article(rs.getInt("id"), rs.getString("title"), rs.getString("content"), rs.getDate("date"), rs.getInt("liked"), rs.getInt("idcat"));
-                articleList.add(articles);
+  Posts p = new Posts();
+
+                p.setId(rs.getInt(1));
+                p.setTitle(rs.getString("title"));
+                p.setContent(rs.getString("content"));
+                p.setObjet(rs.getString("objet"));
+                p.setArchived(rs.getString("archived"));
+                p.setPicture(rs.getString("picture"));
+                p.setCreated_at(rs.getDate("created_at"));
+                p.setIdcat(rs.getInt("idcat"));
+                p.setUser_id(rs.getInt("user_id"));
+                p.setNblikes(rs.getInt("nblikes"));
+                 articleList.add(p);
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
         return articleList;
     }

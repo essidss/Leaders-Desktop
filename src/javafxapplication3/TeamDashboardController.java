@@ -214,15 +214,15 @@ public class TeamDashboardController implements Initializable {
         stage.setScene(new Scene(root1));
         stage.show();
     } 
-//        public void affiche(){
-//        
-//        System.out.println(serviceTeam.afficher());
-//        list1=serviceTeam.afficher().stream().
-//                map(e->e.toString().substring(e.toString().indexOf("{"),e.toString().indexOf("}"))
-//                    ).collect(Collectors.toList());            
-//        //listv.getItems().addAll(list1);
-//        teamtable.setItems(list1);
-//    }
+        @FXML
+        public void affiche(MouseEvent event){
+        listM.removeAll(listM);
+        listM=serviceTeam.rechercherTeam(searchteam.getText());
+        teamnametable.setCellValueFactory(new PropertyValueFactory<Team,String>("TeamName"));
+        descriptiontable.setCellValueFactory(new PropertyValueFactory<Team,String>("Description"));
+        isactiveteam.setCellValueFactory(new PropertyValueFactory<Team,String>("isactive"));
+        teamtable.setItems(listM);
+    }
     
 //    public void removeItem(){
 //        serviceUser.supprimer();

@@ -13,7 +13,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import Connectivity.ConnectionClass;
-import Modal.Article;
+import Modal.Posts;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
