@@ -243,7 +243,7 @@ public class ArticleController implements Initializable {
 //        bookauthor.setText(article.getContent());
         //booktitle.setVisible(false);
         idArticle.setText((String.valueOf(article.getId())));
-        idArticle.setVisible(true);
+        idArticle.setVisible(false);
         iduser.setText((String.valueOf(article.getUser_id())));
         iduser.setVisible(false);
         view.setText((String.valueOf(article.getNbviews())));

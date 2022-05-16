@@ -36,11 +36,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
-
 
 /**
  * FXML Controller class
@@ -48,33 +48,24 @@ import javafx.stage.Stage;
  * @author msi
  */
 public class ReponsegridController implements Initializable {
-  @FXML
+
+    @FXML
     private GridPane grid1;
     List<Reponse> reponses = new ArrayList();
     @FXML
     private ScrollPane scrollpane;
-       private javafx.stage.Stage stage,stage1;
-    private Scene scene,scene1;
-    private Parent root,root1;
+    private javafx.stage.Stage stage, stage1;
+    private Scene scene, scene1;
+    private Parent root, root1;
     @FXML
     private TextField tfrech;
     @FXML
     private ComboBox<String> trinom;
     @FXML
-    private Button user;
-    @FXML
     private Button team;
     @FXML
-    private Button Articles;
-    @FXML
-    private Button btnCat11;
-    @FXML
-    private Button btnCat111;
-    @FXML
-    private Button btnCat1111;
-    
-  
-    
+    private ImageView profil;
+
 //         private List<Comment> getData() {
 //        List<Comment> offres = new ArrayList();
 //        Comment comment;
@@ -88,7 +79,6 @@ public class ReponsegridController implements Initializable {
 //        }
 //        return offres;
 //    }
-
     /**
      * Initializes the controller class.
      */
@@ -96,21 +86,19 @@ public class ReponsegridController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         ServiceRep sp7 = new ServiceRep();
         Ireponse cmnt;
-      cmnt = new ServiceRep();
-         reponses= cmnt.afficherReponse();
-          
-         
-       
+        cmnt = new ServiceRep();
+        reponses = cmnt.afficherReponse();
+
         try {
-             int col = 0;
-        int row = 0;
+            int col = 0;
+            int row = 0;
             for (int i = 0; i < reponses.size(); i++) {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("FXMLR.fxml"));
 
                 AnchorPane anchorpane = fxmlLoader.load();
 
-               FXMLRController itemController = fxmlLoader.getController();
+                FXMLRController itemController = fxmlLoader.getController();
                 itemController.setData(reponses.get(i));
 
                 if (col == 1) {
@@ -132,193 +120,158 @@ public class ReponsegridController implements Initializable {
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
-        
-        
-        
-        
-        
-        
-        
-             
-        
-        
-        
- tfrech.textProperty().addListener((observable, oldValue, newValue) -> {
-        ServiceRep sp1 = new ServiceRep();
-        Reponse u1 =new Reponse();
-        String nom = tfrech.getText();
-        u1.setReponse(nom);
-        u1.setDate(nom);
-       
-         try{
-              int cin1 = Integer.parseInt(nom);
-             u1.setId(cin1);
-         }
-   catch(Exception e){}
-     // LBshow.setText(nom);
-          ObservableList<Reponse> list1 = FXCollections.observableArrayList(sp1.rechstream(u1));
-reponses.clear();
-grid1.getChildren().clear();
-reponses.addAll(list1);
- 
-        try {
-         int col = 0;
-        int row = 0;
-            for (int i = 0; i < reponses.size(); i++) {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("FXMLR.fxml"));
 
-                AnchorPane anchorpane = fxmlLoader.load();
+        tfrech.textProperty().addListener((observable, oldValue, newValue) -> {
+            ServiceRep sp1 = new ServiceRep();
+            Reponse u1 = new Reponse();
+            String nom = tfrech.getText();
+            u1.setReponse(nom);
+            u1.setDate(nom);
 
-               FXMLRController itemController = fxmlLoader.getController();
-                itemController.setData(reponses.get(i));
+            try {
+                int cin1 = Integer.parseInt(nom);
+                u1.setId(cin1);
+            } catch (Exception e) {
+            }
+            // LBshow.setText(nom);
+            ObservableList<Reponse> list1 = FXCollections.observableArrayList(sp1.rechstream(u1));
+            reponses.clear();
+            grid1.getChildren().clear();
+            reponses.addAll(list1);
 
-                if (col == 1) {
-                    col = 0;
-                    row++;
+            try {
+                int col = 0;
+                int row = 0;
+                for (int i = 0; i < reponses.size(); i++) {
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("FXMLR.fxml"));
+
+                    AnchorPane anchorpane = fxmlLoader.load();
+
+                    FXMLRController itemController = fxmlLoader.getController();
+                    itemController.setData(reponses.get(i));
+
+                    if (col == 1) {
+                        col = 0;
+                        row++;
+                    }
+
+                    grid1.add(anchorpane, col++, row);
+                    grid1.setMinWidth(Region.USE_COMPUTED_SIZE);
+                    grid1.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                    grid1.setMaxWidth(Region.USE_PREF_SIZE);
+
+                    grid1.setMinHeight(Region.USE_COMPUTED_SIZE);
+                    grid1.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                    grid1.setMaxHeight(Region.USE_PREF_SIZE);
+
+                    GridPane.setMargin(anchorpane, new Insets(10));
+                }
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+
+            }
+            // tableCategorie.setItems(list1);
+            //if(tfrech.getText().trim().isEmpty()){    tableCategorie.setItems(list);}
+            ;
+        });
+
+        trinom.getItems().setAll("reponse", "date");
+
+        // bind the selected fruit label to the selected fruit in the combo box.
+        //  LBshow.textProperty().bind(trinom.getSelectionModel().selectedItemProperty());
+        // listen for changes to the fruit combo box selection and update the displayed fruit image accordingly.
+        trinom.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+
+            @Override
+            public void changed(ObservableValue<? extends String> selected, String oldFruit, String newFruit) {
+                if (newFruit == "reponse") {
+                    ObservableList<Reponse> list2 = FXCollections.observableArrayList(sp7.tristreamdescription());
+                    reponses.clear();
+                    grid1.getChildren().clear();
+                    reponses.addAll(list2);
+
+                    try {
+                        int col = 0;
+                        int row = 0;
+                        for (int i = 0; i < reponses.size(); i++) {
+                            FXMLLoader fxmlLoader = new FXMLLoader();
+                            fxmlLoader.setLocation(getClass().getResource("FXMLR.fxml"));
+
+                            AnchorPane anchorpane = fxmlLoader.load();
+
+                            FXMLRController itemController = fxmlLoader.getController();
+                            itemController.setData(reponses.get(i));
+
+                            if (col == 1) {
+                                col = 0;
+                                row++;
+                            }
+
+                            grid1.add(anchorpane, col++, row);
+                            grid1.setMinWidth(Region.USE_COMPUTED_SIZE);
+                            grid1.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                            grid1.setMaxWidth(Region.USE_PREF_SIZE);
+
+                            grid1.setMinHeight(Region.USE_COMPUTED_SIZE);
+                            grid1.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                            grid1.setMaxHeight(Region.USE_PREF_SIZE);
+
+                            GridPane.setMargin(anchorpane, new Insets(10));
+                        }
+                    } catch (IOException ex) {
+                        System.out.println(ex.getMessage());
+
+                    }
+                }
+                if (newFruit == "date") {
+                    ObservableList<Reponse> list2 = FXCollections.observableArrayList(sp7.tristreamdate());
+                    reponses.clear();
+                    grid1.getChildren().clear();
+                    reponses.addAll(list2);
+
+                    try {
+                        int col = 0;
+                        int row = 0;
+                        for (int i = 0; i < reponses.size(); i++) {
+                            FXMLLoader fxmlLoader = new FXMLLoader();
+                            fxmlLoader.setLocation(getClass().getResource("FXMLR.fxml"));
+
+                            AnchorPane anchorpane = fxmlLoader.load();
+
+                            FXMLRController itemController = fxmlLoader.getController();
+                            itemController.setData(reponses.get(i));
+
+                            if (col == 1) {
+                                col = 0;
+                                row++;
+                            }
+
+                            grid1.add(anchorpane, col++, row);
+                            grid1.setMinWidth(Region.USE_COMPUTED_SIZE);
+                            grid1.setPrefWidth(Region.USE_COMPUTED_SIZE);
+                            grid1.setMaxWidth(Region.USE_PREF_SIZE);
+
+                            grid1.setMinHeight(Region.USE_COMPUTED_SIZE);
+                            grid1.setPrefHeight(Region.USE_COMPUTED_SIZE);
+                            grid1.setMaxHeight(Region.USE_PREF_SIZE);
+
+                            GridPane.setMargin(anchorpane, new Insets(10));
+                        }
+                    } catch (IOException ex) {
+                        System.out.println(ex.getMessage());
+
+                    }
                 }
 
-                grid1.add(anchorpane, col++, row);
-                grid1.setMinWidth(Region.USE_COMPUTED_SIZE);
-                grid1.setPrefWidth(Region.USE_COMPUTED_SIZE);
-                grid1.setMaxWidth(Region.USE_PREF_SIZE);
-
-                grid1.setMinHeight(Region.USE_COMPUTED_SIZE);
-                grid1.setPrefHeight(Region.USE_COMPUTED_SIZE);
-                grid1.setMaxHeight(Region.USE_PREF_SIZE);
-
-                GridPane.setMargin(anchorpane, new Insets(10));
             }
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-            
-        
-            
-        }
-   // tableCategorie.setItems(list1);
-    //if(tfrech.getText().trim().isEmpty()){    tableCategorie.setItems(list);}
-   ;
-});
-        
-        
-        
-        
-   trinom.getItems().setAll("reponse", "date");
+        });
 
-    // bind the selected fruit label to the selected fruit in the combo box.
-  //  LBshow.textProperty().bind(trinom.getSelectionModel().selectedItemProperty());
-
-    // listen for changes to the fruit combo box selection and update the displayed fruit image accordingly.
-      trinom.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-        
-      @Override
-      public void changed(ObservableValue<? extends String> selected, String oldFruit, String newFruit) {
-     if(newFruit=="reponse"){  ObservableList<Reponse> list2 = FXCollections.observableArrayList(sp7.tristreamdescription());
-      reponses.clear();
-grid1.getChildren().clear();
-reponses.addAll(list2);
- 
-        try {
-         int col = 0;
-        int row = 0;
-            for (int i = 0; i < reponses.size(); i++) {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("FXMLR.fxml"));
-
-                AnchorPane anchorpane = fxmlLoader.load();
-
-               FXMLRController itemController = fxmlLoader.getController();
-                itemController.setData(reponses.get(i));
-
-                if (col == 1) {
-                    col = 0;
-                    row++;
-                }
-
-                grid1.add(anchorpane, col++, row);
-                grid1.setMinWidth(Region.USE_COMPUTED_SIZE);
-                grid1.setPrefWidth(Region.USE_COMPUTED_SIZE);
-                grid1.setMaxWidth(Region.USE_PREF_SIZE);
-
-                grid1.setMinHeight(Region.USE_COMPUTED_SIZE);
-                grid1.setPrefHeight(Region.USE_COMPUTED_SIZE);
-                grid1.setMaxHeight(Region.USE_PREF_SIZE);
-
-                GridPane.setMargin(anchorpane, new Insets(10));
-            }
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-            
-        
-            
-        }}
-     if(newFruit=="date"){  ObservableList<Reponse> list2 = FXCollections.observableArrayList(sp7.tristreamdate());
-       reponses.clear();
-grid1.getChildren().clear();
-reponses.addAll(list2);
- 
-        try {
-         int col = 0;
-        int row = 0;
-            for (int i = 0; i < reponses.size(); i++) {
-                FXMLLoader fxmlLoader = new FXMLLoader();
-                fxmlLoader.setLocation(getClass().getResource("FXMLR.fxml"));
-
-                AnchorPane anchorpane = fxmlLoader.load();
-
-               FXMLRController itemController = fxmlLoader.getController();
-                itemController.setData(reponses.get(i));
-
-                if (col == 1) {
-                    col = 0;
-                    row++;
-                }
-
-                grid1.add(anchorpane, col++, row);
-                grid1.setMinWidth(Region.USE_COMPUTED_SIZE);
-                grid1.setPrefWidth(Region.USE_COMPUTED_SIZE);
-                grid1.setMaxWidth(Region.USE_PREF_SIZE);
-
-                grid1.setMinHeight(Region.USE_COMPUTED_SIZE);
-                grid1.setPrefHeight(Region.USE_COMPUTED_SIZE);
-                grid1.setMaxHeight(Region.USE_PREF_SIZE);
-
-                GridPane.setMargin(anchorpane, new Insets(10));
-            }
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-            
-        
-            
-        }}
-    
-    }  });  
-     
-        
-      
-
-   
-  
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    }    
+    }
 
     @FXML
     private void Add(ActionEvent event) {
-        
+
         try {
             root = FXMLLoader.load(getClass().getResource("add_Reponse.fxml"));
             stage = (javafx.stage.Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -327,14 +280,12 @@ reponses.addAll(list2);
             stage.show();
         } catch (IOException ex) {
         }
-        
-}
-    
-    
-    
-     
+
+    }
+
     @FXML
-       public void switchToEvent(ActionEvent event) throws IOException{
+
+    public void switchToEvent(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Eventaffichage.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -342,8 +293,10 @@ reponses.addAll(list2);
         stage.setScene(scene);
         stage.show();
     }
+
     @FXML
-    public void switchToEventCategorie(ActionEvent event) throws IOException{
+
+    public void switchToEventCategorie(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("categoriegrid.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -351,8 +304,10 @@ reponses.addAll(list2);
         stage.setScene(scene);
         stage.show();
     }
+
     @FXML
-    public void switchToListReponse(ActionEvent event) throws IOException{
+
+    public void switchToListReponse(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("reponsegrid.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -360,17 +315,21 @@ reponses.addAll(list2);
         stage.setScene(scene);
         stage.show();
     }
+
     @FXML
-    public void switchToClaims(ActionEvent event) throws IOException{
+
+    public void switchToClaims(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("reclamationgridBack.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setTitle("CategorieAnnonceBack");
         stage.setScene(scene);
         stage.show();
-    }  
+    }
+
     @FXML
-    public void switchToFront(ActionEvent event) throws IOException{
+
+    public void switchToFront(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Front.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
@@ -378,14 +337,5 @@ reponses.addAll(list2);
         stage.setScene(scene);
         stage.show();
     }
-       
-    
-    
+
 }
-    
-    
-    
-    
-    
-
-

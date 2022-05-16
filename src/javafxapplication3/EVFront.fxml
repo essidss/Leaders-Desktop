@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="497.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication3.EVFrontController">
+<AnchorPane id="AnchorPane" prefHeight="497.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication3.EVFrontController">
     
 
 
@@ -78,7 +78,7 @@
       <Button fx:id="QRCoe" layoutX="512.0" layoutY="362.0" mnemonicParsing="false" onAction="#QR" prefHeight="52.0" prefWidth="54.0" />
       <ImageView fitHeight="29.0" fitWidth="41.0" layoutX="525.0" layoutY="374.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/icons8-qr-code-50.png" />
+            <Image url="@../Images/icons8_qr_code_50px.png" />
          </image>
       </ImageView>
       <ImageView fx:id="fruitImg1" fitHeight="214.0" fitWidth="200.0" layoutX="30.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true" />

@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication3.ADD_CategorieController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication3.ADD_CategorieController">
  
 
 
@@ -240,20 +240,15 @@
           
             <ImageView fitHeight="31.0" fitWidth="25.0" layoutX="668.0" layoutY="535.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/WorkShope3A35/WorkShope3A35/src/images/add.png" />
+                  <Image url="@../Images/icons8_add_32px.png" />
                </image>
             </ImageView>
          </children>
       </AnchorPane>
-      <ImageView fitHeight="121.0" fitWidth="179.0" layoutX="1008.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/icons8-post-64.png" />
-         </image>
-      </ImageView>
       <Button layoutX="920.0" layoutY="584.0" mnemonicParsing="false" onAction="#rett" prefHeight="46.0" prefWidth="52.0" />
       <ImageView fitHeight="31.0" fitWidth="31.0" layoutX="931.0" layoutY="592.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/icons8-back-50.png" />
+            <Image url="@../Images/icons8_angle_right_32px_1.png" />
          </image>
       </ImageView>
       <Text layoutX="411.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Categorie" textAlignment="CENTER" wrappingWidth="372.1328125">

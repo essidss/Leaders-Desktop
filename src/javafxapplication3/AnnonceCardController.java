@@ -85,8 +85,8 @@ public class AnnonceCardController{
         Image image = null;
              
         try {
-            System.out.println("C:\\Users\\aboud\\Desktop\\GESTION_ANNONCE\\src\\imgAnnonce" + annonce.getImage());
-            image = new Image(new FileInputStream("C:\\Users\\aboud\\Desktop\\GESTION_ANNONCE\\src\\imgAnnonce\\" + annonce.getImage()));
+            System.out.println("C:\\Users\\hp\\Documents\\NetBeansProjects\\JavaFXApplication3\\src\\imgAnnonce\\" + annonce.getImage());
+            image = new Image(new FileInputStream("C:\\Users\\hp\\Documents\\NetBeansProjects\\JavaFXApplication3\\src\\imgAnnonce\\" + annonce.getImage()));
         }catch (Exception ex){
         }
         annonceimage.setImage(image);

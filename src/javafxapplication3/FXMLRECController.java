@@ -309,7 +309,7 @@ public class FXMLRECController implements Initializable {
 //    }
 
     public void switchToEditPage(ActionEvent event, Reclamation comment) throws IOException {
-        switchPage(event, "./modifierReclam.fxml", comment);
+        switchPage(event, "modifierReclam.fxml", comment);
 
     }
 

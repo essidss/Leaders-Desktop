@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="723.0" prefWidth="1281.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication3.ADD_ReclamationController">
+<AnchorPane id="AnchorPane" prefHeight="723.0" prefWidth="1281.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication3.ADD_ReclamationController">
  
 
 
@@ -230,7 +230,7 @@
           
             <ImageView fitHeight="31.0" fitWidth="25.0" layoutX="668.0" layoutY="535.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/WorkShope3A35/WorkShope3A35/src/images/add.png" />
+                  <Image url="@../Images/icons8_add_32px.png" />
                </image>
             </ImageView>
             <Text layoutX="157.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Reclamation" textAlignment="CENTER" wrappingWidth="372.1328125">
@@ -243,7 +243,7 @@
       <Button layoutX="1034.0" layoutY="592.0" mnemonicParsing="false" onAction="#rett" prefHeight="46.0" prefWidth="53.0" />
       <ImageView fitHeight="25.0" fitWidth="38.0" layoutX="1048.0" layoutY="603.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/icons8-back-50.png" />
+            <Image url="@../Images/icons8_angle_right_32px_1.png" />
          </image>
       </ImageView>
    </children>

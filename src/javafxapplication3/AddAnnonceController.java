@@ -103,7 +103,7 @@ public class AddAnnonceController implements Initializable {
             annonce.setCategorie(nom);
 
             annonce.setId_categorie(servicecategorie.getall().stream().filter(e->e.getNom().equals(nom)).map(Annonce_Categorie::getId).collect(Collectors.toList()).get(0));
-            copyImage.deplacerVers(label_photo, absolutePathPhotoAnnonce, "C:\\Users\\aboud\\Desktop\\GESTION_ANNONCE\\src\\imgAnnonce");
+            copyImage.deplacerVers(label_photo, absolutePathPhotoAnnonce, "C:\\Users\\hp\\Documents\\NetBeansProjects\\JavaFXApplication3\\src\\imgAnnonce");
             System.out.println(annonce.toString());
             serviceannonce.add(annonce);
             Stage s = (Stage) tfTitle.getScene().getWindow();

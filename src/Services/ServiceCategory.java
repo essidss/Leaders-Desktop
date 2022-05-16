@@ -29,7 +29,7 @@ private Connection cnx = ConnectionClass.getInstance().getCnx() ;
     @Override
     public void ajouter(Category t) {
     try {
-        String querry= "INSERT INTO category( `nom`) VALUES ('"+t.getNom()+"')";
+        String querry= "INSERT INTO category( `nom`,`user_id`) VALUES ('"+t.getNom()+"','"+LoginSession.UID+"')";
         Statement stm = cnx.createStatement();
     
     stm.executeUpdate(querry);

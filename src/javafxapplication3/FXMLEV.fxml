@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="326.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication3.FXMLEVController">
+<AnchorPane id="AnchorPane" prefHeight="326.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication3.FXMLEVController">
     
 
 
@@ -68,14 +68,14 @@
             <Font name="Comic Sans MS Bold" size="19.0" />
          </font></Label>
       <Label fx:id="id" layoutX="278.0" layoutY="345.0" text="id" visible="false" />
-      <ImageView fitHeight="17.0" fitWidth="26.0" layoutX="78.0" layoutY="275.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="29.0" fitWidth="25.0" layoutX="74.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/111.png" />
+            <Image url="@../Images/icons8-delete-trash-100.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="17.0" fitWidth="23.0" layoutX="150.0" layoutY="273.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="147.0" layoutY="270.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/11.png" />
+            <Image url="@../Images/icons8_update_64px.png" />
          </image>
       </ImageView>
       <Label layoutX="264.0" layoutY="184.0" text="Description:">

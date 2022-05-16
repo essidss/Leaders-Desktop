@@ -149,7 +149,7 @@ try {
 //    }
 
     public void switchToEditPage(ActionEvent event, Event comment) throws IOException {
-        switchPage(event, "./updateevnt.fxml", comment);
+        switchPage(event, "updateevnt.fxml", comment);
 
     }
 

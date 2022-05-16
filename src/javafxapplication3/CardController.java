@@ -6,6 +6,8 @@ package javafxapplication3;
 
 import Modal.Posts;
 import Modal.Category;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -60,8 +62,15 @@ public class CardController implements Initializable {
  public void setArticle(Posts article) {
         //Image image = new Image(getClass().getResourceAsStream(article.getImage()));
        // ArticleImage.setImage(image);
+        Image image = null;
+        try {
+            System.out.println("C:\\Users\\hp\\Documents\\NetBeansProjects\\JavaFXApplication3\\src\\img\\" + article.getPicture());
+            image = new Image(new FileInputStream("C:\\Users\\hp\\Documents\\NetBeansProjects\\JavaFXApplication3\\src\\img\\" + article.getPicture()));
+        } catch (FileNotFoundException ex) {
+        }
+         // ArticleImage.setImage(image);
         articleName.setText(article.getTitle());
-        author.setText(article.getContent());
+        author.setText(String.valueOf(article.getCreated_at()));
         // box.setStyle("-fx-background-color:#" + colors[(int)(Math.random()*colors.length)]);
   }
 

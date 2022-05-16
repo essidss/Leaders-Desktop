@@ -49,6 +49,7 @@ import org.controlsfx.control.Notifications;
 import Services.ServiceReclam;
 import Services.ServiceRep;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -84,17 +85,15 @@ public class ADD_ReclamationController implements Initializable {
     @FXML
     private TextField description;
     @FXML
-    private Button user;
-    @FXML
     private Button team;
     @FXML
-    private Button Articles;
+    private Button btnAnnonces;
     @FXML
-    private Button btnCat11;
+    private Button dash;
     @FXML
-    private Button btnCat111;
+    private Button signout;
     @FXML
-    private Button btnCat1111;
+    private ImageView profil;
     
 
     

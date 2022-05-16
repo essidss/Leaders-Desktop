@@ -59,10 +59,10 @@ public class FrontController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        if(LoginSession.Role.equals("Role_USER")){
+        /*if(LoginSession.Role.equals("Role_USER")){
             dash.setDisable(true);
             dash.setVisible(false);
-        }
+        }*/
     }    
     public void teamItems(){
         list=serviceTeam.afficher();
@@ -70,7 +70,7 @@ public class FrontController implements Initializable {
             
         }
     }
-    
+     @FXML
     public void switchToDash(ActionEvent event) throws IOException{
         root = FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -80,6 +80,7 @@ public class FrontController implements Initializable {
         stage.show();  
         
     }  
+ @FXML
       public void showblog(ActionEvent event) throws IOException{
         root = FXMLLoader.load(getClass().getResource("FXMLArticles.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -89,6 +90,7 @@ public class FrontController implements Initializable {
         stage.show();  
         
     }  
+ @FXML
  public void showTeam(ActionEvent event) throws IOException{
         root = FXMLLoader.load(getClass().getResource("Team.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -97,7 +99,8 @@ public class FrontController implements Initializable {
         stage.setScene(scene);
         stage.show();  
         
-    }  
+    } 
+ @FXML 
     public void switchProfilePopup() throws IOException{
         
         FXMLLoader fxmlloader = new FXMLLoader (getClass().getResource("Profile.fxml"));
@@ -118,6 +121,8 @@ public class FrontController implements Initializable {
         stage.setScene(scene);
         stage.show();    
     }
+    @FXML
+
      public void switchToAnnonces(ActionEvent event) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("AnnonceController.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -126,6 +131,8 @@ public class FrontController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+    @FXML
+
     public void switchToEvent(ActionEvent event) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("EventAffichageFront.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -134,7 +141,8 @@ public class FrontController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-    
+        @FXML
+
     public void switchToReclamation(ActionEvent event) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("ADD_Reclamation.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

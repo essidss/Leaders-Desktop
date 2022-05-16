@@ -68,7 +68,7 @@ public class AnnonceDetailsController{
         annonceId=id;
             //System.out.println("C:\\Users\\aboud\\Desktop\\GESTION_ANNONCE\\src\\imgAnnonce" + annonce.getImage());
             try {
-                Image image1 = new Image(new FileInputStream("C:\\Users\\aboud\\Desktop\\GESTION_ANNONCE\\src\\imgAnnonce\\" + image));
+                Image image1 = new Image(new FileInputStream("C:\\Users\\hp\\Documents\\NetBeansProjects\\JavaFXApplication3\\src\\imgAnnonce\\" + image));
                 annonceimage.setImage(image1);
         }catch (FileNotFoundException ex){
         }

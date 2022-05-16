@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="JavaFXApplication3.jar" size="29969683" download="eager" />
+    <jar href="JavaFXApplication3.jar" size="31480498" download="eager" />
     <jar href="lib\NotificationAPI.jar" size="2821" download="eager" />
     <jar href="lib\argon2-jvm-2.5.jar" size="407137" download="eager" />
     <jar href="lib\barcode4j.jar" size="256468" download="eager" />

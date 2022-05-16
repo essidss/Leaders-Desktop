@@ -613,7 +613,7 @@ reponses.addAll(list2);
         ObservableList<Reclamation> list = sf.getCoursList();
 
         try{
-            OutputStream file = new FileOutputStream(new File("C:\\Users\\aboud\\Desktop\\gestion_annonce\\fact.pdf"));
+            OutputStream file = new FileOutputStream(new File("C:\\Users\\hp\\Documents\\NetBeansProjects\\JavaFXApplication3\\src\\fact.pdf"));
             Document document = new Document();
             PdfWriter.getInstance(document, file);
             document.open();
@@ -624,7 +624,7 @@ reponses.addAll(list2);
 
             document.add(pdfTitle);
             
-            Image img=Image.getInstance("C:\\Users\\aboud\\Desktop\\gestion_annonce\\src\\Images\\icons8-pdf-64.png");
+            Image img=Image.getInstance("C:\\Users\\hp\\Documents\\NetBeansProjects\\JavaFXApplication3\\src\\Images\\icons8-pdf-64.png");
             document.add(img);
 //         
      

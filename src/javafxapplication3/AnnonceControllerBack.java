@@ -197,7 +197,7 @@ public class AnnonceControllerBack  implements Initializable{
     }
     
     public void switchToCategorie(ActionEvent event) throws IOException{
-        Parent root = FXMLLoader.load(getClass().getResource("Categorie.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Categorie_1.fxml"));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setTitle("CategorieAnnonceBack");

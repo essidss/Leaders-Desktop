@@ -38,7 +38,7 @@ public class ServicePosts implements IService<Posts> {
         String date = dateFormat.format(d1);
         String dc = date;
         try {
-            String querry = "INSERT INTO posts(`title`, `content` ,`objet`, `picture`,`created_at`,`user_id`) VALUES ('" + t.getTitle() + "','" + t.getContent() + "','" + t.getObjet() + "','" + t.getPicture() + "','" + dc + "','" + t.getUser_id() + "')";
+            String querry = "INSERT INTO posts(`title`, `content` ,`objet`, `picture`,`created_at`,`user_id`) VALUES ('" + t.getTitle() + "','" + t.getContent() + "','" + t.getObjet() + "','" + t.getPicture() + "','" + dc + "','" + LoginSession.UID + "')";
             Statement stm = cnx.createStatement();
 
             stm.executeUpdate(querry);

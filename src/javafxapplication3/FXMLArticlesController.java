@@ -126,7 +126,7 @@ public class FXMLArticlesController implements Initializable {
 
         }
         ServicePosts sp = new ServicePosts();
-        recentlyadded = new ArrayList<>(recentlyadded());
+        recentlyadded = new ArrayList<>(recent());
         articles = new ArrayList<>(sp.getArticle());
 
         int colum = 0;
@@ -164,6 +164,7 @@ public class FXMLArticlesController implements Initializable {
 
         // TODO  
         //showArticles();
+recent();
     }
 
     public void music() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
@@ -262,10 +263,43 @@ public class FXMLArticlesController implements Initializable {
         } catch (Exception e) {
             // e.printStackTrace();
         }
-        System.out.println("javafxapplication3.FXMLArticlesController.getArticleList()" + articleList);
+        //System.out.println("javafxapplication3.FXMLArticlesController.getArticleList()" + articleList);
         return articleList;
     }
 
+
+ public ObservableList<Posts> recent() {
+        ObservableList<Posts> articleList = FXCollections.observableArrayList();
+        String query = "SELECT * FROM posts WHERE archived='" + 0 + "' Order by created_at desc ";
+        Statement st;
+        ResultSet rs;
+
+        try {
+            st = cnx.createStatement();
+            rs = st.executeQuery(query);
+              int i=1;
+            while (rs.next() && (i<4))  {
+                Posts p = new Posts();
+
+                p.setId(rs.getInt(1));
+                p.setTitle(rs.getString("title"));
+                p.setContent(rs.getString("content"));
+                p.setObjet(rs.getString("objet"));
+                p.setArchived(rs.getString("archived"));
+                p.setPicture(rs.getString("picture"));
+                p.setCreated_at(rs.getDate("created_at"));
+                p.setIdcat(rs.getInt("idcat"));
+                p.setUser_id(rs.getInt("user_id"));
+                p.setNblikes(rs.getInt("nblikes"));
+                articleList.add(p);
+               i++;
+            }
+        } catch (Exception e) {
+            // e.printStackTrace();
+        }
+        System.out.println("javafxapplication3.FXMLArticlesController.getArticleList()" + articleList);
+        return articleList;
+    }
     public void switchToDash(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getResource("Dashboard.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

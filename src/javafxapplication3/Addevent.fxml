@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication3.AddeventController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication3.AddeventController">
     
 
     
@@ -308,16 +308,11 @@
           
             <ImageView fitHeight="31.0" fitWidth="25.0" layoutX="668.0" layoutY="535.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../Downloads/WorkShope3A35/WorkShope3A35/src/images/add.png" />
+                  <Image url="@../Images/icons8_add_32px.png" />
                </image>
             </ImageView>
          </children>
       </AnchorPane>
-      <ImageView fitHeight="121.0" fitWidth="179.0" layoutX="994.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../Downloads/Leaders-Desktop-mahdi%20(1)/Leaders-Desktop-mahdi/src/Images/game-control.png" />
-         </image>
-      </ImageView>
       <Text layoutX="472.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter Evenement" textAlignment="CENTER" wrappingWidth="372.1328125">
          <font>
             <Font name="Comic Sans MS Bold" size="36.0" />
@@ -326,7 +321,7 @@
       <Button layoutX="1034.0" layoutY="629.0" mnemonicParsing="false" onAction="#rett" prefHeight="40.0" prefWidth="57.0" />
       <ImageView fitHeight="31.0" fitWidth="25.0" layoutX="1050.0" layoutY="634.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/icons8-back-50.png" />
+            <Image url="@../Images/icons8_angle_right_32px_1.png" />
          </image>
       </ImageView>
    </children>

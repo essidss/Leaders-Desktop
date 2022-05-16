@@ -80,7 +80,7 @@
                </font>
             </Button>
             <Separator layoutX="10.0" layoutY="400.0" prefHeight="15.0" prefWidth="250.0" />
-            <Button fx:id="btnAnnonces" mnemonicParsing="false" onAction="#switchToAnnonce" prefHeight="59.0" prefWidth="247.0" style="-fx-background-color: #D3DEDC; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);" text="Annonces">
+            <Button fx:id="btnAnnonces" mnemonicParsing="false" onAction="#switchToAnnonces" prefHeight="59.0" prefWidth="247.0" style="-fx-background-color: #D3DEDC; -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0)dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);" text="Annonces">
                <graphic>
                   <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
                      <image>

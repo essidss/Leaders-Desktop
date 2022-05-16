@@ -131,7 +131,7 @@ try {
 //    }
 
     public void switchToEditPage(ActionEvent event, Reponse comment) throws IOException {
-        switchPage(event, "./modifierreponse.fxml", comment);
+        switchPage(event, "modifierreponse.fxml", comment);
 
     }
 

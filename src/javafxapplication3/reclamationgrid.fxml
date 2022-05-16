@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="1281.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication3.ReclamationgridController">
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="1281.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication3.ReclamationgridController">
 
  
 
@@ -149,7 +149,7 @@
       <Button layoutX="1154.0" layoutY="162.0" mnemonicParsing="false" onAction="#Add" prefHeight="53.0" prefWidth="52.0" />
       <ImageView fitHeight="34.0" fitWidth="25.0" layoutX="1168.0" layoutY="172.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/add.png" />
+            <Image url="@../Images/icons8_add_32px.png" />
          </image>
       </ImageView>
       <Text fill="#1c1c1c" fontSmoothingType="LCD" layoutX="431.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mes Reclamations" textAlignment="CENTER" wrappingWidth="419.69140625">
@@ -159,7 +159,7 @@
       </Text>
       <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="851.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../images/500px-Search_Icon.svg.png" />
+            <Image url="@../Images/icons8_search_50px.png" />
          </image>
       </ImageView>
       <Button layoutX="1155.0" layoutY="287.0" mnemonicParsing="false" onAction="#switchToRep" text="SHOW" />

@@ -535,7 +535,7 @@ reponses.addAll(list2);
     private void Add(ActionEvent event) {
         
         try {
-            root = FXMLLoader.load(getClass().getResource("Add_Reclamation.fxml"));
+            root = FXMLLoader.load(getClass().getResource("ADD_Reclamation.fxml"));
             stage = (javafx.stage.Stage) ((Node) event.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
