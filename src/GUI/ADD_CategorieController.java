@@ -75,6 +75,7 @@ public class ADD_CategorieController implements Initializable {
     private Scene scene;
     private Parent root;
     private Categorie rec;
+    private int s;
     @FXML
     private Circle C1;
 
