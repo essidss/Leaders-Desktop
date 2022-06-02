@@ -11,7 +11,7 @@ package GUI;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
-
+     
 import com.sun.org.apache.bcel.internal.generic.LoadInstruction;
 import interfaces.Ievent;
 import interfaces.Icategorie;
